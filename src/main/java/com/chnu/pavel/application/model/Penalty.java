@@ -24,7 +24,7 @@ public class Penalty {
     @Id
     private String       id;
     private BigDecimal   cost;
-    private boolean      isMessageSent;
-    private short        daysPassed;
+    private boolean      isWarningSent;
+    private short        penaltyDaysAmount;
 
 }
