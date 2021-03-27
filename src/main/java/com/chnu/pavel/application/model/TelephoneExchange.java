@@ -20,10 +20,10 @@ import org.springframework.data.annotation.Id;
 public class TelephoneExchange {
 
     @Id
-    private String     id;
-    private String     codeName;
-    private District   district;
-    private String     stationType;
-    private String     workingStatus;
+    private String          id;
+    private String          codeName;
+    private District        district;
+    private StationType     stationType;
+    private String          workingStatus;
 
 }

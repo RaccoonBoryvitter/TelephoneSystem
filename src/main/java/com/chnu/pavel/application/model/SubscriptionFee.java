@@ -18,14 +18,14 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@ToString
 public class SubscriptionFee {
 
     @Id
     private String       id;
     private Subscriber   subscriber;
-    private BigDecimal   monthlyFee;
     private Penalty      penalty;
-    private BigDecimal   intercityAccessFee;
+    private BigDecimal   localCost;
+    private BigDecimal   intercityCallsCost;
+    private BigDecimal   totalCost;
 
 }

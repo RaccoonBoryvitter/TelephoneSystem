@@ -11,7 +11,7 @@ import java.math.BigDecimal;
  *
  * @Autor: Pavel Shcherbatyi
  * @DateTime: 15.03.2021|01:21
- * @Version Debt: 1.0
+ * @Version Penalty: 1.0
  */
 
 @Data

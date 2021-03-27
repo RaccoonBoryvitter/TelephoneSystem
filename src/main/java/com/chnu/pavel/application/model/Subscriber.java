@@ -24,10 +24,10 @@ public class Subscriber {
     @Id
     private String            id;
     private String            fullName;
-    private String            gender;
+    private boolean           gender;
     private LocalDate         dateOfBirth;
     private PrivilegeType     privilegeType;
     private PhoneNumber       phoneNumber;
-    private boolean           longDistanceAccess;
+    private boolean           intercityAccess;
 
 }

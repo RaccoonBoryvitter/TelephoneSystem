@@ -5,11 +5,11 @@ import org.springframework.data.annotation.Id;
 
 /**
  * Created by IntelliJ IDEA.
- * TelephoneSystem.Country
+ * TelephoneSystem.Region
  *
  * @Autor: Pavel Shcherbatyi
- * @DateTime: 22.03.2021|02:11
- * @Version Country: 1.0
+ * @DateTime: 25.03.2021|09:07
+ * @Version Region: 1.0
  */
 
 @Data
@@ -17,11 +17,11 @@ import org.springframework.data.annotation.Id;
 @NoArgsConstructor
 @ToString
 @Builder
-public class Country {
+public class Region {
 
     @Id
     private String id;
     private String name;
-    private String phoneCode;
+    private State  state;
 
 }

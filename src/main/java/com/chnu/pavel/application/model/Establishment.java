@@ -22,6 +22,7 @@ public class Establishment {
     @Id
     private String              id;
     private String              name;
+    private Address             address;
     private TelephoneExchange   telephoneExchange;
 
 }

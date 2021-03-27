@@ -3,6 +3,7 @@ package com.chnu.pavel.application.model;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 /**
@@ -18,15 +19,14 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@ToString
-public class CallDetailsRecord {
+public class CallDetailRecord {
 
     @Id
     private String              id;
     private PhoneNumber         from;
     private PhoneNumber         to;
-    private LocalTime           startedAt;
-    private LocalTime           finishedAt;
+    private LocalDateTime       startedAt;
+    private LocalDateTime       finishedAt;
     private ConversationType    conversationType;
     private TelephoneExchange   telephoneExchange;
 

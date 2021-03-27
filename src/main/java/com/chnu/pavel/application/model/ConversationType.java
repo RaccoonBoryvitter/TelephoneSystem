@@ -14,16 +14,12 @@ import java.math.BigDecimal;
  * @Version ConversationType: 1.0
  */
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
-@Builder
-public class ConversationType {
+public enum ConversationType {
 
-    @Id
-    private String       id;
-    private String       type;
-    private BigDecimal   extraCharge;
+    CITY_LOCAL,
+    AGENCY_LOCAL,
+    ESTABLISHMENT_LOCAL,
+    INTERCITY,
+    // міжнародний
 
 }

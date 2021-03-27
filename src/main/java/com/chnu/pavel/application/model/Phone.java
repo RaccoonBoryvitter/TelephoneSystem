@@ -20,7 +20,7 @@ import org.springframework.data.annotation.Id;
 public class Phone {
 
     @Id
-    private String id;
-    private String phoneType;
-    private String status;
+    private String    id;
+    private PhoneType phoneType;
+    private String    isWorking;
 }

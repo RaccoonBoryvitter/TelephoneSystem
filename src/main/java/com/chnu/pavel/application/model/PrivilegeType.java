@@ -20,6 +20,7 @@ import java.math.BigDecimal;
 @ToString
 @Builder
 public class PrivilegeType {
+    // TODO: enum
 
     @Id
     private String       id;

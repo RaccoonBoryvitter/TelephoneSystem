@@ -22,6 +22,8 @@ public class Agency {
     @Id
     private String              id;
     private String              name;
+    private Address             address;
+    // TODO: owner
     private TelephoneExchange   telephoneExchange;
 
 }

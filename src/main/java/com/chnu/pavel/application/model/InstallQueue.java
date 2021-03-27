@@ -3,6 +3,7 @@ package com.chnu.pavel.application.model;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
@@ -28,7 +29,7 @@ public class InstallQueue {
     private LocalDateTime   installationTime;
     private String          cableAvailability;
     private String          channelAvailability;
-    private PhoneNumber     phoneNumberAvailability;
-    private float           cost;
+    private PhoneNumber     availableNumber;
+    private BigDecimal      cost;
 
 }
