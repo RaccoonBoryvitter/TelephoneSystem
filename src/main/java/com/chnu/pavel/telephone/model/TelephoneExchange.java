@@ -2,6 +2,7 @@ package com.chnu.pavel.telephone.model;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
@@ -23,6 +24,7 @@ public class TelephoneExchange {
     @Id
     private String          id;
     private String          codeName;
+    @DBRef
     private Address         address;
     private StationType     stationType;
     private short           availableCables;

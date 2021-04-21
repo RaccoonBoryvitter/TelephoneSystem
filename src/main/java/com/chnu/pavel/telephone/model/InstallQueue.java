@@ -2,6 +2,7 @@ package com.chnu.pavel.telephone.model;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
@@ -32,6 +33,7 @@ public class InstallQueue {
     private LocalDateTime   installationTime;
     private boolean         cableAvailability;
     private boolean         channelAvailability;
+    @DBRef
     private PhoneNumber     availableNumber;
     private BigDecimal      cost;
 

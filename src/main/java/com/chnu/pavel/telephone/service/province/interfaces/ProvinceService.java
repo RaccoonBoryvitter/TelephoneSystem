@@ -1,6 +1,8 @@
 package com.chnu.pavel.telephone.service.province.interfaces;
 
+import com.chnu.pavel.telephone.dao.province.interfaces.ProvinceDAO;
 import com.chnu.pavel.telephone.model.Province;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,11 +19,11 @@ import java.util.List;
 @Service
 public interface ProvinceService {
 
-    Province create(Province province);
-    Province getById(String id);
-    Province updateById(Province province, String id);
-    String deleteById(String id);
+    Province findProvinceById(String id);
+    Province updateProvinceById(Province province, String id);
+    Province createProvince(Province province);
+    String deleteProvinceById(String id);
 
-    List<Province> getAll();
+    List<Province> findAllProvinces();
 
 }

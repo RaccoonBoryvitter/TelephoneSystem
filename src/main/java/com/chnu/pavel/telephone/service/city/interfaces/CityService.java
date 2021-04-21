@@ -1,6 +1,9 @@
 package com.chnu.pavel.telephone.service.city.interfaces;
 
+import com.chnu.pavel.telephone.dao.city.interfaces.CityDAO;
 import com.chnu.pavel.telephone.model.City;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,10 +21,10 @@ import java.util.List;
 public interface CityService {
 
     City create(City city);
-    City getById(String id);
+    City findById(String id);
     City updateById(City city, String id);
     String deleteById(String id);
 
-    List<City> getCities();
+    List<City> findAll();
 
 }

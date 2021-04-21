@@ -3,8 +3,8 @@ package com.chnu.pavel.telephone.service.province.impls;
 import com.chnu.pavel.telephone.dao.province.interfaces.ProvinceDAO;
 import com.chnu.pavel.telephone.model.Province;
 import com.chnu.pavel.telephone.service.province.interfaces.ProvinceService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import lombok.RequiredArgsConstructor;
+import org.bson.types.ObjectId;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -14,39 +14,39 @@ import java.util.List;
  * TelephoneSystem.ProvinceServiceImpl
  *
  * @Autor: Pavel Shcherbatyi
- * @DateTime: 01.04.2021|01:20
+ * @DateTime: 15.04.2021|00:29
  * @Version ProvinceServiceImpl: 1.0
  */
 
 @Component
+@RequiredArgsConstructor
 public class ProvinceServiceImpl implements ProvinceService {
 
-    @Qualifier("provinceDAOImpl")
-    @Autowired
-    private ProvinceDAO dao;
+    private final ProvinceDAO dao;
 
     @Override
-    public Province create(Province province) {
-        return dao.create(province);
+    public List<Province> findAllProvinces() {
+        return dao.findAllProvinces();
     }
 
     @Override
-    public Province getById(String id) {
-        return dao.getById(id);
+    public Province findProvinceById(String id) {
+        return dao.findProvinceById(id);
     }
 
     @Override
-    public Province updateById(Province province, String id) {
-        return dao.updateById(province, id);
+    public Province createProvince(Province province) {
+        return dao.createProvince(province);
     }
 
     @Override
-    public String deleteById(String id) {
-        return dao.deleteById(id);
+    public Province updateProvinceById(Province province, String id) {
+        return dao.updateProvinceById(province, id);
     }
 
     @Override
-    public List<Province> getAll() {
-        return dao.getAll();
+    public String deleteProvinceById(String id) {
+        return dao.deleteProvinceById(id);
     }
+
 }

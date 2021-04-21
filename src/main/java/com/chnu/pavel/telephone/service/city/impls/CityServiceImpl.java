@@ -4,7 +4,10 @@ import com.chnu.pavel.telephone.dao.city.interfaces.CityDAO;
 import com.chnu.pavel.telephone.model.City;
 import com.chnu.pavel.telephone.service.city.interfaces.CityService;
 import lombok.AllArgsConstructor;
+import org.bson.types.ObjectId;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -13,15 +16,20 @@ import java.util.List;
  * TelephoneSystem.CityServiceImpl
  *
  * @Autor: Pavel Shcherbatyi
- * @DateTime: 07.04.2021|19:50
+ * @DateTime: 15.04.2021|00:23
  * @Version CityServiceImpl: 1.0
  */
 
-@Component
+@Service
 @AllArgsConstructor
 public class CityServiceImpl implements CityService {
 
     private final CityDAO dao;
+
+    @Override
+    public List<City> findAll() {
+        return dao.findAll();
+    }
 
     @Override
     public City create(City city) {
@@ -29,8 +37,8 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public City getById(String id) {
-        return dao.getById(id);
+    public City findById(String id) {
+        return dao.findById(id);
     }
 
     @Override
@@ -43,8 +51,4 @@ public class CityServiceImpl implements CityService {
         return dao.deleteById(id);
     }
 
-    @Override
-    public List<City> getCities() {
-        return dao.getCities();
-    }
 }

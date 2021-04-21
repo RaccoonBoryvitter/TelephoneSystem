@@ -1,8 +1,14 @@
 package com.chnu.pavel.telephone.model;
 
 import lombok.*;
+import org.apache.tomcat.jni.Local;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 /**
  * Created by IntelliJ IDEA.
@@ -13,10 +19,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * @Version Region: 1.0
  */
 
+@Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @Document(collection = "provinces")
 public class Province {
 
@@ -26,4 +32,6 @@ public class Province {
     private String phoneCode;
     private State  state;
 
+
 }
+

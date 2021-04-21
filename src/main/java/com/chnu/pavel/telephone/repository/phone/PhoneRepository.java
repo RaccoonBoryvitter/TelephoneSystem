@@ -3,7 +3,10 @@ package com.chnu.pavel.telephone.repository.phone;
 import com.chnu.pavel.telephone.model.Phone;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -16,4 +19,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PhoneRepository extends MongoRepository<Phone, ObjectId> {
+
 }

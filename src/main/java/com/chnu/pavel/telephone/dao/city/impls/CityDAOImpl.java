@@ -3,7 +3,6 @@ package com.chnu.pavel.telephone.dao.city.impls;
 import com.chnu.pavel.telephone.dao.city.interfaces.CityDAO;
 import com.chnu.pavel.telephone.model.City;
 import com.chnu.pavel.telephone.repository.city.interfaces.CityRepository;
-import com.chnu.pavel.telephone.repository.city.interfaces.CityRepositoryV2;
 import lombok.AllArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.stereotype.Component;
@@ -15,7 +14,7 @@ import java.util.List;
  * TelephoneSystem.CityDAOImpl
  *
  * @Autor: Pavel Shcherbatyi
- * @DateTime: 07.04.2021|19:45
+ * @DateTime: 15.04.2021|00:56
  * @Version CityDAOImpl: 1.0
  */
 
@@ -27,28 +26,31 @@ public class CityDAOImpl implements CityDAO {
 
     @Override
     public City create(City city) {
-        return repository.create(city);
+        return repository.insert(city);
     }
 
     @Override
-    public City getById(String id) {
-        return repository.getById(id);
+    public City findById(String id) {
+        return repository.findById(new ObjectId(id)).orElse(null);
     }
-
 
     @Override
     public City updateById(City city, String id) {
-        return repository.updateById(city, id);
+        City upToDate = findById(id);
+        upToDate.setName(city.getName());
+        upToDate.setPhoneCode(city.getPhoneCode());
+        upToDate.setProvince(city.getProvince());
+        return repository.save(upToDate);
     }
 
     @Override
     public String deleteById(String id) {
-        repository.deleteById(id);
-        return "Object was deleted";
+        repository.deleteById(new ObjectId(id));
+        return "Object " + id + " has been removed from Cities";
     }
 
     @Override
-    public List<City> getCities() {
-        return repository.getCities();
+    public List<City> findAll() {
+        return repository.findAll();
     }
 }

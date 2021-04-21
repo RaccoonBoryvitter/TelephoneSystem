@@ -5,6 +5,7 @@ import com.mongodb.client.MongoClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 /**
  * Created by IntelliJ IDEA.
@@ -16,6 +17,7 @@ import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
  */
 
 @Configuration
+@EnableMongoRepositories(basePackages = "com.chnu.pavel.telephone.repository")
 public class MongoDBConfig extends AbstractMongoClientConfiguration {
 
     @Bean
