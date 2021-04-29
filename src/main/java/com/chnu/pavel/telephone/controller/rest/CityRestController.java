@@ -3,6 +3,7 @@ package com.chnu.pavel.telephone.controller.rest;
 import com.chnu.pavel.telephone.model.City;
 import com.chnu.pavel.telephone.service.city.interfaces.CityService;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
@@ -20,16 +21,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/cities")
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class CityRestController {
 
-    @Autowired
-    @Qualifier("cityServiceImpl")
     private final CityService service;
 
     @RequestMapping("/get/all/")
     public List<City> getCities() {
-        return service.getCities();
+        return service.findAll();
     }
 
     @PostMapping("/create/")
@@ -39,7 +38,7 @@ public class CityRestController {
 
     @GetMapping("/get/{id}")
     public City getById( @PathVariable("id") String id) {
-        return service.getById(id);
+        return service.findById(id);
     }
 
     @PostMapping("/update/{id}")

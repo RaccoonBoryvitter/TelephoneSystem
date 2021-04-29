@@ -23,33 +23,31 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProvinceRestController {
 
-    @Autowired
-    @Qualifier("provinceServiceImpl")
-    ProvinceService service;
+    private final ProvinceService service;
 
     @RequestMapping("/get/all")
     public List<Province> getProvinces() {
-        return service.getAll();
+        return service.findAllProvinces();
     }
 
     @GetMapping("/get/{id}")
     public Province getById(@PathVariable("id") String id) {
-        return service.getById(id);
+        return service.findProvinceById(id);
     }
 
     @GetMapping("/delete/{id}")
     public String deleteById(@PathVariable("id") String id) {
-        return service.deleteById(id);
+        return service.deleteProvinceById(id);
     }
 
     @PostMapping("/create/")
     public Province create(@RequestBody Province province) {
-        return service.create(province);
+        return service.createProvince(province);
     }
 
     @PostMapping("/update/{id}")
     public Province update(@RequestBody Province province, @PathVariable("id") String id) {
-        return service.updateById(province, id);
+        return service.updateProvinceById(province, id);
     }
 
 }
