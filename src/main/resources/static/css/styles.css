@@ -1,20 +1,35 @@
+h1 {
+    font-family: 'Comfortaa', cursive;
+    text-align: center;
+    font-size: xx-large;
+    margin-top: 75px;
+}
+
 table {
+    font-family: 'Comfortaa', cursive;
     border-collapse: collapse;
-    margin: 25px 0;
+    margin: 75px auto;
     font-size: 0.9em;
-    font-family: sans-serif;
-    min-width: 400px;
+    width: 40%;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
 thead tr {
+    font-family: 'Comfortaa', cursive;
     background-color: #009879;
     color: #ffffff;
     text-align: left;
 }
 
 table th, table td {
+    font-family: 'Comfortaa', cursive;
     padding: 12px 15px;
+    text-align: center;
+}
+
+th {
+    font-size: 24px;
+    padding: 18px 24px;
 }
 
 table tbody tr {
@@ -32,4 +47,53 @@ table tbody tr:last-of-type {
 table tbody tr.active-row {
     font-weight: bold;
     color: #009879;
+}
+
+table i {
+    font-size: 1.6em;
+    color: black;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+table i.fa-eye:hover {
+    color: dodgerblue;
+    transition: .3s linear;
+}
+
+table i.fa-edit:hover {
+    color: #5cb85c;
+    transition: .3s linear;
+}
+
+table i.fa-trash-alt:hover {
+    color: #ff253a;
+    transition: .3s linear;
+}
+
+#create-modal-button {
+    font-family: 'Comfortaa', cursive;
+    background-color: white;
+    border-radius: 7px;
+    border: 3px solid black;
+    color: black;
+    cursor: pointer;
+    float: right;
+    font-size: 15px;
+    margin: 5px 42%;
+    padding: 5px 20px;
+    transition: .3s linear;
+}
+
+#create-modal-button:hover {
+    background-color: black;
+    color: white;
+}
+
+label, input, select, h4 b, h5, .modal-title, p {
+    font-family: 'Comfortaa', cursive;
+}
+
+.undone {
+    color: #ff3025;
 }

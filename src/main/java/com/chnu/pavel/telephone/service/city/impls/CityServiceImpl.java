@@ -20,7 +20,7 @@ import java.util.List;
  * @Version CityServiceImpl: 1.0
  */
 
-@Service
+@Component
 @AllArgsConstructor
 public class CityServiceImpl implements CityService {
 
@@ -28,6 +28,10 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public List<City> findAll() {
+        dao.findAll().stream()
+           .filter(c -> c.getProvince() == null)
+           .forEach(c -> dao.deleteById(c.getId()));
+
         return dao.findAll();
     }
 
