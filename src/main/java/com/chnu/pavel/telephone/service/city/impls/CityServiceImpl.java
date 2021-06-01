@@ -37,17 +37,17 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public City findById(String id) {
+    public City findById(Long id) {
         return dao.findById(id);
     }
 
     @Override
-    public City updateById(City city, String id) {
+    public City updateById(City city, Long id) {
         return dao.updateById(city, id);
     }
 
     @Override
-    public String deleteById(String id) {
+    public String deleteById(Long id) {
         return dao.deleteById(id);
     }
 

@@ -1,7 +1,6 @@
 package com.chnu.pavel.telephone.dao.city.interfaces;
 
 import com.chnu.pavel.telephone.model.City;
-import com.chnu.pavel.telephone.repository.city.interfaces.CityRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,9 +18,9 @@ import java.util.List;
 public interface CityDAO {
 
     City create(City city);
-    City findById(String id);
-    City updateById(City city, String id);
-    String deleteById(String id);
+    City findById(Long id);
+    City updateById(City city, Long id);
+    String deleteById(Long id);
 
     List<City> findAll();
 

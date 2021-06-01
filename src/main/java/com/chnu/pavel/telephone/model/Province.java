@@ -1,16 +1,21 @@
 package com.chnu.pavel.telephone.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.apache.tomcat.jni.Local;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.lang.Nullable;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.Date;
 
 /**
  * Created by IntelliJ IDEA.
@@ -37,8 +42,14 @@ public class Province {
     private String phoneCode;
     private State  state;
 
-    private LocalDateTime created_at;
-    private LocalDateTime modified_at;
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss.SSS")
+    @DateTimeFormat(style="yyyy-MM-dd HH:mm:ss.SSS")
+    @Field("createdAt")
+    private Date created_at;
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss.SSS")
+    @DateTimeFormat(style="yyyy-MM-dd HH:mm:ss.SSS")
+    @Field("modifiedAt")
+    private Date modified_at;
     private String description;
 
 }

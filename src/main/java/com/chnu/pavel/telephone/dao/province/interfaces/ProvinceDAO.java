@@ -1,7 +1,7 @@
 package com.chnu.pavel.telephone.dao.province.interfaces;
 
+import com.chnu.pavel.telephone.dao.GenericDAO;
 import com.chnu.pavel.telephone.model.Province;
-import com.chnu.pavel.telephone.repository.province.interfaces.ProvinceRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -16,13 +16,6 @@ import java.util.List;
  */
 
 @Repository
-public interface ProvinceDAO {
-
-    Province findProvinceById(String id);
-    Province updateProvinceById(Province province, String id);
-    Province createProvince(Province province);
-    String deleteProvinceById(String id);
-
-    List<Province> findAllProvinces();
+public interface ProvinceDAO extends GenericDAO<Province> {
 
 }

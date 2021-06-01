@@ -18,7 +18,7 @@ import java.util.List;
  */
 
 @Repository
-public interface InvoiceRepository extends MongoRepository<Invoice, ObjectId> {
+public interface InvoiceRepository extends MongoRepository<Invoice, Long> {
 
     @Query("{ 'totalCost' : {$gt : ?0} }")
     List<Invoice> findAllInvoicesWhenTotalCostGreaterThanNumber(double cost);

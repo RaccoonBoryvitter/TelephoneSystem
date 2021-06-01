@@ -1,4 +1,4 @@
-package com.chnu.pavel.telephone.repository.city.interfaces;
+package com.chnu.pavel.telephone.repository.city;
 
 import com.chnu.pavel.telephone.model.City;
 import org.bson.types.ObjectId;
@@ -15,6 +15,6 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-public interface CityRepository extends MongoRepository<City, ObjectId> {
+public interface CityRepository extends MongoRepository<City, Long> {
 
 }

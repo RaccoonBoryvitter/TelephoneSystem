@@ -38,12 +38,12 @@ public class ProvinceUiController {
     @GetMapping("/get/{id}")
     @ResponseBody
     public Province findById(@PathVariable("id") String id) {
-        return service.findById(id);
+        return service.findById(Long.valueOf(id));
     }
 
     @GetMapping("/delete/{id}")
     public String deleteById( @PathVariable("id") String id) {
-        service.deleteById(id);
+        service.deleteById(Long.valueOf(id));
         return "redirect:/ui/provinces";
     }
 
@@ -63,7 +63,7 @@ public class ProvinceUiController {
         province.setName(request.getParameter("update-name").trim());
         province.setPhoneCode(request.getParameter("update-phone-code").trim());
         province.setState(State.valueOf(request.getParameter("update-state")));
-        service.updateById(province, id);
+        service.updateById(Long.valueOf(id), province);
         return "redirect:/ui/provinces";
     }
 

@@ -2,12 +2,11 @@ package com.chnu.pavel.telephone.dao.province.impls;
 
 import com.chnu.pavel.telephone.dao.province.interfaces.ProvinceDAO;
 import com.chnu.pavel.telephone.model.Province;
-import com.chnu.pavel.telephone.repository.province.interfaces.ProvinceRepository;
+import com.chnu.pavel.telephone.repository.province.ProvinceRepository;
 import lombok.AllArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -26,13 +25,13 @@ public class ProvinceDAOImpl implements ProvinceDAO {
     private final ProvinceRepository repository;
 
     @Override
-    public Province findProvinceById(String id) {
-        return repository.findById(new ObjectId(id)).orElse(null);
+    public Province findById(Long id) {
+        return repository.findById(id).orElse(null);
     }
 
     @Override
-    public Province updateProvinceById(Province province, String id) {
-        Province upToDate = findProvinceById(id);
+    public Province updateById(Long id, Province province) {
+        Province upToDate = findById(id);
         upToDate.setName(province.getName());
         upToDate.setPhoneCode(province.getPhoneCode());
         upToDate.setState(province.getState());
@@ -40,18 +39,20 @@ public class ProvinceDAOImpl implements ProvinceDAO {
     }
 
     @Override
-    public Province createProvince(Province province) {
+    public Province create(Province province) {
         return repository.insert(province);
     }
 
     @Override
-    public String deleteProvinceById(String id) {
-        repository.deleteById(new ObjectId(id));
-        return "Object " + id + " has been removed from Provinces";
+    public Province deleteById(Long id) {
+        Province deleted = findById(id);
+        repository.deleteById(id);
+        if(!repository.findById(id).isPresent()) return deleted;
+        else return null;
     }
 
     @Override
-    public List<Province> findAllProvinces() {
+    public List<Province> findAll() {
         return repository.findAll();
     }
 }

@@ -32,12 +32,12 @@ public class ProvinceRestController {
 
     @GetMapping("/get/{id}")
     public Province getById(@PathVariable("id") String id) {
-        return service.findById(id);
+        return service.findById(Long.valueOf(id));
     }
 
     @GetMapping("/delete/{id}")
     public String deleteById(@PathVariable("id") String id) {
-        return service.deleteById(id);
+        return "Object " + service.deleteById(Long.valueOf(id)).toString() + " was succesfully deleted";
     }
 
     @PostMapping("/create/")
@@ -47,7 +47,7 @@ public class ProvinceRestController {
 
     @PostMapping("/update/{id}")
     public Province update(@RequestBody Province province, @PathVariable("id") String id) {
-        return service.updateById(province, id);
+        return service.updateById(Long.valueOf(id), province);
     }
 
 }

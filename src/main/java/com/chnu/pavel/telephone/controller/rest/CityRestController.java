@@ -23,8 +23,6 @@ import java.util.List;
 @AllArgsConstructor
 public class CityRestController {
 
-    @Autowired
-    @Qualifier("cityServiceImpl")
     private final CityService service;
 
     @RequestMapping("/get/all/")
@@ -39,17 +37,17 @@ public class CityRestController {
 
     @GetMapping("/get/{id}")
     public City getById( @PathVariable("id") String id) {
-        return service.findById(id);
+        return service.findById(Long.valueOf(id));
     }
 
     @PostMapping("/update/{id}")
     public City updateById( @RequestBody City city, @PathVariable("id") String id) {
-        return service.updateById(city, id);
+        return service.updateById(city, Long.valueOf(id));
     }
 
     @GetMapping("delete/{id}")
     public String deleteById( @PathVariable("id") String id) {
-        return service.deleteById(id);
+        return service.deleteById(Long.valueOf(id));
     }
 
 }

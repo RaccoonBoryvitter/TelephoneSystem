@@ -15,5 +15,5 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-public interface EstablishmentRepository extends MongoRepository<Establishment, ObjectId> {
+public interface EstablishmentRepository extends MongoRepository<Establishment, Long> {
 }

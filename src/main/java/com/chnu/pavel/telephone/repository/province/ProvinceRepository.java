@@ -1,4 +1,4 @@
-package com.chnu.pavel.telephone.repository.province.interfaces;
+package com.chnu.pavel.telephone.repository.province;
 
 import com.chnu.pavel.telephone.model.Province;
 import org.bson.types.ObjectId;
@@ -17,6 +17,6 @@ import java.util.List;
  */
 
 @Repository
-public interface ProvinceRepository extends MongoRepository<Province, ObjectId> {
+public interface ProvinceRepository extends MongoRepository<Province, Long> {
 
 }

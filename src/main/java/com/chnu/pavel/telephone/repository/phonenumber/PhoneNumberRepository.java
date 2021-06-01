@@ -15,5 +15,5 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-public interface PhoneNumberRepository extends MongoRepository<PhoneNumber, ObjectId> {
+public interface PhoneNumberRepository extends MongoRepository<PhoneNumber, Long> {
 }

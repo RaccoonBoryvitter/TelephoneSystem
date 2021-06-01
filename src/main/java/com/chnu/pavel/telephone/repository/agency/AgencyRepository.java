@@ -15,5 +15,5 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-public interface AgencyRepository extends MongoRepository<Agency, ObjectId> {
+public interface AgencyRepository extends MongoRepository<Agency, Long> {
 }

@@ -18,6 +18,6 @@ import java.util.List;
  */
 
 @Repository
-public interface PhoneRepository extends MongoRepository<Phone, ObjectId> {
+public interface PhoneRepository extends MongoRepository<Phone, Long> {
 
 }

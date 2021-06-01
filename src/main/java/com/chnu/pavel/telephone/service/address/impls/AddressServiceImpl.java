@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -33,14 +35,14 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public Address create(Address address) {
-        address.setCreated_at(LocalDateTime.now());
-        address.setModified_at(LocalDateTime.now());
+        address.setCreated_at(Date.from(Instant.now()));
+        address.setModified_at(Date.from(Instant.now()));
         return addressDAO.create(address);
     }
 
     @Override
     public Address updateById(Long id, Address address) {
-        address.setModified_at(LocalDateTime.now());
+        address.setModified_at(Date.from(Instant.now()));
         return addressDAO.updateById(id, address);
     }
 

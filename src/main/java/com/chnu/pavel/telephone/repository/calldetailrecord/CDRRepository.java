@@ -15,5 +15,5 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-public interface CDRRepository extends MongoRepository<CallDetailRecord, ObjectId> {
+public interface CDRRepository extends MongoRepository<CallDetailRecord, Long> {
 }

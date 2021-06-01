@@ -18,7 +18,7 @@ import java.util.List;
  */
 
 @Repository
-public interface SubscriberRepository  extends MongoRepository<Subscriber, ObjectId> {
+public interface SubscriberRepository  extends MongoRepository<Subscriber, Long> {
 
     @Query(value = "{ 'gender' : ?0 }")
     List<Subscriber> findAllFemaleSubscribers(String gender);

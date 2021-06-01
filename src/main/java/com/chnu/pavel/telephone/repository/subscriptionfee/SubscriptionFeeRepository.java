@@ -15,5 +15,5 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-public interface SubscriptionFeeRepository extends MongoRepository<SubscriptionFee, ObjectId> {
+public interface SubscriptionFeeRepository extends MongoRepository<SubscriptionFee, Long> {
 }

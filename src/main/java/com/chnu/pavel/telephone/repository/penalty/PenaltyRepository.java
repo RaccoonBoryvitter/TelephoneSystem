@@ -18,6 +18,6 @@ import java.util.List;
  */
 
 @Repository
-public interface PenaltyRepository extends MongoRepository<Penalty, ObjectId> {
+public interface PenaltyRepository extends MongoRepository<Penalty, Long> {
 
 }

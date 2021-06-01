@@ -21,9 +21,9 @@ import java.util.List;
 public interface CityService {
 
     City create(City city);
-    City findById(String id);
-    City updateById(City city, String id);
-    String deleteById(String id);
+    City findById(Long id);
+    City updateById(City city, Long id);
+    String deleteById(Long id);
 
     List<City> findAll();
 
