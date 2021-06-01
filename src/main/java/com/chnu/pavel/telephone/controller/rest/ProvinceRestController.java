@@ -1,5 +1,6 @@
 package com.chnu.pavel.telephone.controller.rest;
 
+import com.chnu.pavel.telephone.helper.SequenceGeneratorService;
 import com.chnu.pavel.telephone.model.Province;
 import com.chnu.pavel.telephone.service.province.interfaces.ProvinceService;
 import lombok.RequiredArgsConstructor;
@@ -7,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
+import java.time.Instant;
 import java.util.List;
 
 /**
@@ -26,7 +29,7 @@ public class ProvinceRestController {
     private final ProvinceService service;
 
     @RequestMapping("/get/all")
-    public List<Province> getProvinces() {
+    public List<Province> findAll() {
         return service.findAll();
     }
 

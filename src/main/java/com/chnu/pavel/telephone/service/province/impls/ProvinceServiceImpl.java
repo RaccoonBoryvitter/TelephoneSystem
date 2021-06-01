@@ -1,12 +1,15 @@
 package com.chnu.pavel.telephone.service.province.impls;
 
 import com.chnu.pavel.telephone.dao.province.interfaces.ProvinceDAO;
+import com.chnu.pavel.telephone.helper.SequenceGeneratorService;
 import com.chnu.pavel.telephone.model.Province;
 import com.chnu.pavel.telephone.service.province.interfaces.ProvinceService;
 import lombok.RequiredArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.stereotype.Component;
 
+import java.sql.Date;
+import java.time.Instant;
 import java.util.List;
 
 /**
@@ -23,6 +26,7 @@ import java.util.List;
 public class ProvinceServiceImpl implements ProvinceService {
 
     private final ProvinceDAO dao;
+    private final SequenceGeneratorService generatorService;
 
     @Override
     public List<Province> findAll() {
@@ -36,11 +40,15 @@ public class ProvinceServiceImpl implements ProvinceService {
 
     @Override
     public Province create(Province province) {
+        province.setId(generatorService.getSequenceNumber(Province.SEQUENCE_NAME));
+        province.setCreated_at(Date.from(Instant.now()));
+        province.setModified_at(Date.from(Instant.now()));
         return dao.create(province);
     }
 
     @Override
     public Province updateById(Long id, Province province) {
+        province.setModified_at(Date.from(Instant.now()));
         return dao.updateById(id, province);
     }
 
