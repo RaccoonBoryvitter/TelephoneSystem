@@ -4,6 +4,9 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.lang.Nullable;
+
+import java.time.LocalDateTime;
 
 /**
  * Created by IntelliJ IDEA.
@@ -28,5 +31,10 @@ public class City {
 
     @DBRef
     private Province province;
+
+    private LocalDateTime created_at;
+    private LocalDateTime modified_at;
+    @Nullable
+    private String description;
 
 }

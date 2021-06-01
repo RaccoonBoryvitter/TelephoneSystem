@@ -1,84 +1,70 @@
 package com.chnu.pavel.telephone.controller.ui;
 
-import com.chnu.pavel.telephone.form.provinces.ProvinceForm;
+import com.chnu.pavel.telephone.model.City;
 import com.chnu.pavel.telephone.model.Province;
 import com.chnu.pavel.telephone.model.State;
 import com.chnu.pavel.telephone.service.province.interfaces.ProvinceService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Created by IntelliJ IDEA.
- * TelephoneSystem.ProvinceUiController
+ * TelephoneSystem.ProvinceUiConntroller
  *
  * @Autor: Pavel Shcherbatyi
- * @DateTime: 04.04.2021|19:13
- * @Version ProvinceUiController: 1.0
+ * @DateTime: 4/29/2021|10:13 AM
+ * @Version ProvinceUiConntroller: 1.0
  */
 
 @Controller
 @RequestMapping("/ui/provinces")
+@RequiredArgsConstructor
 public class ProvinceUiController {
 
-    @Qualifier("provinceServiceImpl")
-    @Autowired
-    ProvinceService service;
+    private final ProvinceService service;
 
-    @RequestMapping(value = "/get/all", method = RequestMethod.GET)
-    public String getProvinces(Model model) {
-        model.addAttribute("items", service.getAll());
-        return "province/provinces-list";
+    @RequestMapping("")
+    public String findAll(Model model) {
+        model.addAttribute("items", service.findAll());
+        model.addAttribute("states", Arrays.asList(State.values()));
+        return "province/provinces";
     }
 
-//    @GetMapping("/get/{id}")
-//    public Province getById(@PathVariable("id") String id) {
-//        return service.readById(id);
-//    }
-//
-    @RequestMapping( "/delete/{id}")
-    public String deleteById(Model model, @PathVariable("id") String id) {
+    @GetMapping("/get/{id}")
+    @ResponseBody
+    public Province findById(@PathVariable("id") String id) {
+        return service.findById(id);
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteById( @PathVariable("id") String id) {
         service.deleteById(id);
-        return "redirect:/ui/provinces/get/all/";
-    }
-
-    @GetMapping("/create/")
-    public String create(Model model) {
-        ProvinceForm form = new ProvinceForm();
-        List<String> states = Arrays.stream(State.values()).map(State::name).collect(Collectors.toList());
-
-        model.addAttribute("provinceForm", form);
-        model.addAttribute("states", states);
-        System.out.println(model);
-        return "province/province-create";
+        return "redirect:/ui/provinces";
     }
 
     @PostMapping("/create/")
-    public String create(Model model,
-                         @ModelAttribute("provinceForm") ProvinceForm provinceForm) {
+    public String createProvince(HttpServletRequest request) {
         Province province = new Province();
-        province.setName(provinceForm.getName());
-        province.setPhoneCode(provinceForm.getPhoneCode());
-        province.setState(State.valueOf(provinceForm.getState()));
-
+        province.setName(request.getParameter("create-name").trim());
+        province.setPhoneCode(request.getParameter("create-phone-code").trim());
+        province.setState(State.valueOf(request.getParameter("create-state")));
         service.create(province);
-        return "redirect:/ui/provinces/get/all";
+        return "redirect:/ui/provinces";
     }
-//
-//    @PostMapping("/create/")
-//    public Province create(@RequestBody Province province) {
-//        return service.create(province);
-//    }
-//
-//    @PostMapping("/update/")
-//    public Province update(@RequestBody Province province) {
-//        return service.update(province);
-//    }
+
+    @PostMapping("/update/{id}")
+    public String update(HttpServletRequest request, @PathVariable("id") String id) {
+        Province province = new Province();
+        province.setName(request.getParameter("update-name").trim());
+        province.setPhoneCode(request.getParameter("update-phone-code").trim());
+        province.setState(State.valueOf(request.getParameter("update-state")));
+        service.updateById(province, id);
+        return "redirect:/ui/provinces";
+    }
 
 }

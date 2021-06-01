@@ -19,11 +19,11 @@ import java.util.List;
 @Service
 public interface ProvinceService {
 
-    Province findProvinceById(String id);
-    Province updateProvinceById(Province province, String id);
-    Province createProvince(Province province);
-    String deleteProvinceById(String id);
+    Province findById(String id);
+    Province updateById(Province province, String id);
+    Province create(Province province);
+    String deleteById(String id);
 
-    List<Province> findAllProvinces();
+    List<Province> findAll();
 
 }

@@ -23,18 +23,16 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProvinceRestController {
 
-    @Autowired
-    @Qualifier("provinceServiceImpl")
-    ProvinceService service;
+    private final ProvinceService service;
 
     @RequestMapping("/get/all")
     public List<Province> getProvinces() {
-        return service.getAll();
+        return service.findAll();
     }
 
     @GetMapping("/get/{id}")
     public Province getById(@PathVariable("id") String id) {
-        return service.getById(id);
+        return service.findById(id);
     }
 
     @GetMapping("/delete/{id}")

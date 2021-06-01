@@ -6,37 +6,31 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.lang.Nullable;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
  * Created by IntelliJ IDEA.
- * TelephoneSystem.SubscribtionFeeBill
+ * TelephoneSystem.PhoneList
  *
  * @Autor: Pavel Shcherbatyi
- * @DateTime: 25.03.2021|09:45
- * @Version SubscribtionFeeBill: 1.0
+ * @DateTime: 26.05.2021|18:44
+ * @Version PhoneList: 1.0
  */
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
-@Document(collection = "invoices")
-public class Invoice {
+public class ConnectedPhone {
 
     @Id
     private String id;
     @DBRef
-    private Subscriber subscriber;
+    private Phone phone;
     @DBRef
-    private SubscriptionFee subscriptionFee;
-    @DBRef
-    private Penalty penalty;
-    private double totalCost;
+    private PhoneNumber phoneNumber;
 
     private LocalDateTime created_at;
     private LocalDateTime modified_at;

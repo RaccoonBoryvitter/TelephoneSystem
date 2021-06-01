@@ -5,6 +5,7 @@ import org.apache.tomcat.jni.Local;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.lang.Nullable;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -32,6 +33,10 @@ public class Province {
     private String phoneCode;
     private State  state;
 
+    private LocalDateTime created_at;
+    private LocalDateTime modified_at;
+    @Nullable
+    private String description;
 
 }
 

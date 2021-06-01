@@ -4,6 +4,7 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.lang.Nullable;
 
 import java.time.LocalDateTime;
 
@@ -34,5 +35,10 @@ public class CallDetailRecord {
     private ConversationType    conversationType;
     @DBRef
     private TelephoneExchange   telephoneExchange;
+
+    private LocalDateTime created_at;
+    private LocalDateTime modified_at;
+    @Nullable
+    private String description;
 
 }

@@ -29,7 +29,7 @@ public class CityRestController {
 
     @RequestMapping("/get/all/")
     public List<City> getCities() {
-        return service.getCities();
+        return service.findAll();
     }
 
     @PostMapping("/create/")
@@ -39,7 +39,7 @@ public class CityRestController {
 
     @GetMapping("/get/{id}")
     public City getById( @PathVariable("id") String id) {
-        return service.getById(id);
+        return service.findById(id);
     }
 
     @PostMapping("/update/{id}")

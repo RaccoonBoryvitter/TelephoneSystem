@@ -4,8 +4,10 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.lang.Nullable;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * Created by IntelliJ IDEA.
@@ -27,10 +29,15 @@ public class Subscriber {
     private String            id;
     private String            fullName;
     private String            gender;
-    private String         dateOfBirth;
-    private String     privilegeType;
+    private LocalDate         dateOfBirth;
+    private PrivilegeType     privilegeType;
     @DBRef
-    private PhoneNumber       phoneNumber;
+    private ConnectedPhone    connectedPhone;
     private boolean           intercityAccess;
+
+    private LocalDateTime created_at;
+    private LocalDateTime modified_at;
+    @Nullable
+    private String description;
 
 }

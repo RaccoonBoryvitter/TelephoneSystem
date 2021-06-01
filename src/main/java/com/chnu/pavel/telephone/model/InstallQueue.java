@@ -4,6 +4,7 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.lang.Nullable;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -26,15 +27,20 @@ import java.time.LocalDateTime;
 public class InstallQueue {
 
     @Id
-    private String          id;
-    private String          applierFullName;
-    private int             order;
-    private QueueType       queueType;
-    private LocalDateTime   installationTime;
-    private boolean         cableAvailability;
-    private boolean         channelAvailability;
+    private String                   id;
+    private String                   applierFullName;
+    private int                      order;
+    private QueueType                queueType;
+    private LocalDateTime            installationTime;
+    private boolean                  cableAvailability;
+    private boolean                  channelAvailability;
     @DBRef
-    private PhoneNumber     availableNumber;
-    private BigDecimal      cost;
+    private AvailablePhoneNumber     availableNumber;
+    private double                   cost;
+
+    private LocalDateTime created_at;
+    private LocalDateTime modified_at;
+    @Nullable
+    private String description;
 
 }

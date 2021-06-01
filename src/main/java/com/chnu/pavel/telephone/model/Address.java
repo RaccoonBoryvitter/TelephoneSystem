@@ -7,6 +7,10 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.lang.Nullable;
+
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 /**
  * Created by IntelliJ IDEA.
@@ -32,5 +36,10 @@ public class Address {
     private String     building;
     private String     apartmentNo;
     private String     zipCode;
+
+    private LocalDateTime created_at;
+    private LocalDateTime modified_at;
+    @Nullable
+    private String description;
 
 }

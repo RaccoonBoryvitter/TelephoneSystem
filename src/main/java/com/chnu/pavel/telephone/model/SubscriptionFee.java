@@ -3,8 +3,10 @@ package com.chnu.pavel.telephone.model;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.lang.Nullable;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 /**
  * Created by IntelliJ IDEA.
@@ -24,7 +26,12 @@ public class SubscriptionFee {
 
     @Id
     private String       id;
-    private BigDecimal   localCallsCost;
-    private BigDecimal   intercityCallsCost;
+    private double   localCallsCost;
+    private double   intercityCallsCost;
+
+    private LocalDateTime created_at;
+    private LocalDateTime modified_at;
+    @Nullable
+    private String description;
 
 }

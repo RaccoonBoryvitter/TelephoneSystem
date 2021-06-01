@@ -25,27 +25,27 @@ public class ProvinceServiceImpl implements ProvinceService {
     private final ProvinceDAO dao;
 
     @Override
-    public List<Province> findAllProvinces() {
+    public List<Province> findAll() {
         return dao.findAllProvinces();
     }
 
     @Override
-    public Province findProvinceById(String id) {
+    public Province findById(String id) {
         return dao.findProvinceById(id);
     }
 
     @Override
-    public Province createProvince(Province province) {
+    public Province create(Province province) {
         return dao.createProvince(province);
     }
 
     @Override
-    public Province updateProvinceById(Province province, String id) {
+    public Province updateById(Province province, String id) {
         return dao.updateProvinceById(province, id);
     }
 
     @Override
-    public String deleteProvinceById(String id) {
+    public String deleteById(String id) {
         return dao.deleteProvinceById(id);
     }
 
