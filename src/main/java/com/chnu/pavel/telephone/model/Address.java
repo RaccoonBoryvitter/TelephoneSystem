@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.lang.Nullable;
@@ -28,18 +29,20 @@ import java.time.ZonedDateTime;
 @Document(collection = "addresses")
 public class Address {
 
+    @Transient
+    public static final String SEQUENCE_NAME = "addresses";
+
     @Id
-    private String     id;
+    private Long id;
     @DBRef
-    private District   district;
-    private String     street;
-    private String     building;
-    private String     apartmentNo;
-    private String     zipCode;
+    private District district;
+    private String street;
+    private String building;
+    private String apartmentNo;
+    private String zipCode;
 
     private LocalDateTime created_at;
     private LocalDateTime modified_at;
-    @Nullable
     private String description;
 
 }

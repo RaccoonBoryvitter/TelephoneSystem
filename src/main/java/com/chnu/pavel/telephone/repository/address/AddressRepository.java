@@ -18,7 +18,7 @@ import java.util.List;
  */
 
 @Repository
-public interface AddressRepository extends MongoRepository<Address, String> {
+public interface AddressRepository extends MongoRepository<Address, Long> {
 
     @Query("{ 'district' : ?0 }")
     List<Address> findByDistrict(District district);

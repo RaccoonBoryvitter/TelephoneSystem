@@ -1,12 +1,13 @@
 package com.chnu.pavel.telephone.service.address.impls;
 
-import com.chnu.pavel.telephone.dao.address.impls.AddressDAOImpl;
+import com.chnu.pavel.telephone.dao.address.interfaces.AddressDAO;
 import com.chnu.pavel.telephone.model.Address;
 import com.chnu.pavel.telephone.service.address.interfaces.AddressService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -22,32 +23,34 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AddressServiceImpl implements AddressService {
 
-    @Autowired
-    AddressDAOImpl addressDAO;
+    private final AddressDAO addressDAO;
 
 
     @Override
-    public Address getById(String id) {
-        return addressDAO.getById(id);
+    public Address findById(Long id) {
+        return addressDAO.findById(id);
     }
 
     @Override
     public Address create(Address address) {
+        address.setCreated_at(LocalDateTime.now());
+        address.setModified_at(LocalDateTime.now());
         return addressDAO.create(address);
     }
 
     @Override
-    public Address update(Address address) {
-        return addressDAO.update(address);
+    public Address updateById(Long id, Address address) {
+        address.setModified_at(LocalDateTime.now());
+        return addressDAO.updateById(id, address);
     }
 
     @Override
-    public Address delete(Address address) {
-        return addressDAO.delete(address.getId());
+    public Address deleteById(Long id) {
+        return addressDAO.deleteById(id);
     }
 
     @Override
-    public List<Address> getAll() {
-        return addressDAO.getAll();
+    public List<Address> findAll() {
+        return addressDAO.findAll();
     }
 }

@@ -15,10 +15,10 @@ import java.util.List;
 
 public interface AddressService {
 
-    Address getById(String id);
+    Address findById(Long id);
     Address create(Address address);
-    Address update(Address address);
-    Address delete(Address address);
-    List<Address> getAll();
+    Address updateById(Long id, Address address);
+    Address deleteById(Long id);
+    List<Address> findAll();
 
 }

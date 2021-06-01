@@ -23,11 +23,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AddressDAOImpl implements AddressDAO {
 
-    @Autowired
-    AddressRepository addressRepository;
+    private final AddressRepository addressRepository;
 
     @Override
-    public Address getById(String id) {
+    public Address findById(Long id) {
         return addressRepository.findById(id).orElse(null);
     }
 
@@ -37,43 +36,43 @@ public class AddressDAOImpl implements AddressDAO {
     }
 
     @Override
-    public Address update(Address entityObj) {
-        if(addressRepository.findById(entityObj.getId()).isPresent())
+    public Address updateById(Long id, Address entityObj) {
+        if(addressRepository.findById(id).isPresent())
             return addressRepository.save(entityObj);
         else
             return null;
     }
 
     @Override
-    public Address delete(String id) {
+    public Address deleteById(Long id) {
         Address deleted = addressRepository.findById(id).orElse(null);
         addressRepository.deleteById(id);
         return deleted;
     }
 
     @Override
-    public List<Address> getAll() {
+    public List<Address> findAll() {
         return addressRepository.findAll();
     }
 
 
     @Override
-    public List<Address> getByDistrict(District district) {
+    public List<Address> findByDistrict(District district) {
         return addressRepository.findByDistrict(district);
     }
 
     @Override
-    public List<Address> getByStreet(String street) {
+    public List<Address> findByStreet(String street) {
         return addressRepository.findByStreet(street);
     }
 
     @Override
-    public Address getByBuilding(String building) {
+    public Address findByBuilding(String building) {
         return addressRepository.findByBuildingNo(building);
     }
 
     @Override
-    public List<Address> getByZipCode(String zipCode) {
+    public List<Address> findByZipCode(String zipCode) {
         return addressRepository.findByZipCode(zipCode);
     }
 }

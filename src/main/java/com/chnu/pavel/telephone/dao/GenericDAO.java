@@ -13,10 +13,10 @@ import java.util.List;
 
 public interface GenericDAO<EntityObject> {
 
-    EntityObject getById(String id);
+    EntityObject findById(Long id);
     EntityObject create(EntityObject entityObj);
-    EntityObject update(EntityObject entityObj);
-    EntityObject delete(String id);
-    List<EntityObject> getAll();
+    EntityObject updateById(Long id, EntityObject entityObject);
+    EntityObject deleteById(Long id);
+    List<EntityObject> findAll();
 
 }

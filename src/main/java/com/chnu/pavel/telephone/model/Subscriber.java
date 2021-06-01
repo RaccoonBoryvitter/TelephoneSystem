@@ -2,6 +2,7 @@ package com.chnu.pavel.telephone.model;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.lang.Nullable;
@@ -25,19 +26,21 @@ import java.time.LocalDateTime;
 @Document(collection = "subscribers")
 public class Subscriber {
 
+    @Transient
+    public static final String SEQUENCE_NAME = "subscribers";
+
     @Id
-    private String            id;
-    private String            fullName;
-    private Gender            gender;
-    private LocalDate         dateOfBirth;
-    private PrivilegeType     privilegeType;
+    private Long id;
+    private String fullName;
+    private Gender gender;
+    private LocalDate dateOfBirth;
+    private PrivilegeType privilegeType;
     @DBRef
-    private ConnectedPhone    connectedPhone;
-    private boolean           intercityAccess;
+    private ConnectedPhone connectedPhone;
+    private boolean intercityAccess;
 
     private LocalDateTime created_at;
     private LocalDateTime modified_at;
-    @Nullable
     private String description;
 
 }

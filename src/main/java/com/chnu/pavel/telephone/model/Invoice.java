@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.lang.Nullable;
@@ -28,8 +29,11 @@ import java.time.LocalDateTime;
 @Document(collection = "invoices")
 public class Invoice {
 
+    @Transient
+    public static final String SEQUENCE_NAME = "invoices";
+
     @Id
-    private String id;
+    private Long id;
     @DBRef
     private Subscriber subscriber;
     @DBRef
@@ -40,7 +44,6 @@ public class Invoice {
 
     private LocalDateTime created_at;
     private LocalDateTime modified_at;
-    @Nullable
     private String description;
 
 }

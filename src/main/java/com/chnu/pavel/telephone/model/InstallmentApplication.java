@@ -2,6 +2,7 @@ package com.chnu.pavel.telephone.model;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.lang.Nullable;
@@ -28,24 +29,26 @@ import java.util.Date;
 @Document(collection = "installQueue")
 public class InstallmentApplication {
 
+    @Transient
+    public static final String SEQUENCE_NAME = "installQueue";
+
     @Id
-    private String                   id;
-    private String                   applierFullName;
-    private Gender                   applierGender;
-    private LocalDate                applierBirthDay;
-    private PrivilegeType            applierPrivilegeType;
-    private int                      order;
-    private QueueType                queueType;
-    private LocalDateTime            installationTime;
-    private boolean                  cableAvailability;
-    private boolean                  channelAvailability;
+    private Long id;
+    private String applierFullName;
+    private Gender applierGender;
+    private LocalDate applierBirthDay;
+    private PrivilegeType applierPrivilegeType;
+    private int order;
+    private QueueType queueType;
+    private LocalDateTime installationTime;
+    private boolean cableAvailability;
+    private boolean channelAvailability;
     @DBRef
-    private AvailablePhoneNumber     availableNumber;
-    private double                   cost;
+    private AvailablePhoneNumber availableNumber;
+    private double cost;
 
     private LocalDateTime created_at;
     private LocalDateTime modified_at;
-    @Nullable
     private String description;
 
 }

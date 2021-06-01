@@ -18,12 +18,12 @@ import java.util.List;
 public interface AddressDAO extends GenericDAO<Address> {
 
     // additional read operations
-    List<Address> getByDistrict(District district);
+    List<Address> findByDistrict(District district);
 
-    List<Address> getByStreet(String street);
+    List<Address> findByStreet(String street);
 
-    Address getByBuilding(String building);
+    Address findByBuilding(String building);
 
-    List<Address> getByZipCode(String zipCode);
+    List<Address> findByZipCode(String zipCode);
 
 }

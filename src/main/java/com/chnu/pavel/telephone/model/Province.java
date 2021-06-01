@@ -4,6 +4,7 @@ import lombok.*;
 import org.apache.tomcat.jni.Local;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.lang.Nullable;
 
@@ -27,15 +28,17 @@ import java.time.ZoneId;
 @Document(collection = "provinces")
 public class Province {
 
+    @Transient
+    public static final String SEQUENCE_NAME = "provinces";
+
     @Id
-    private String id;
+    private Long id;
     private String name;
     private String phoneCode;
     private State  state;
 
     private LocalDateTime created_at;
     private LocalDateTime modified_at;
-    @Nullable
     private String description;
 
 }

@@ -1,6 +1,6 @@
-package com.chnu.pavel.telephone.repository.installqueue;
+package com.chnu.pavel.telephone.repository.installmentapplication;
 
-import com.chnu.pavel.telephone.model.InstallQueue;
+import com.chnu.pavel.telephone.model.InstallmentApplication;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
@@ -15,5 +15,5 @@ import org.springframework.stereotype.Repository;
  */
 
 @Repository
-public interface InstallQueueRepository extends MongoRepository<InstallQueue, ObjectId> {
+public interface InstallmentApplicationRepository extends MongoRepository<InstallmentApplication, ObjectId> {
 }
