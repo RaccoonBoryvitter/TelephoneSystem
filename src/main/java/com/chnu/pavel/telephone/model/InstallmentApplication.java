@@ -7,7 +7,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.lang.Nullable;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * Created by IntelliJ IDEA.
@@ -24,11 +26,14 @@ import java.time.LocalDateTime;
 @Builder
 @ToString
 @Document(collection = "installQueue")
-public class InstallQueue {
+public class InstallmentApplication {
 
     @Id
     private String                   id;
     private String                   applierFullName;
+    private Gender                   applierGender;
+    private LocalDate                applierBirthDay;
+    private PrivilegeType            applierPrivilegeType;
     private int                      order;
     private QueueType                queueType;
     private LocalDateTime            installationTime;

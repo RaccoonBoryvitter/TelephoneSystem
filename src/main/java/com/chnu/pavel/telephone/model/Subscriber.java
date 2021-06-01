@@ -28,7 +28,7 @@ public class Subscriber {
     @Id
     private String            id;
     private String            fullName;
-    private String            gender;
+    private Gender            gender;
     private LocalDate         dateOfBirth;
     private PrivilegeType     privilegeType;
     @DBRef
