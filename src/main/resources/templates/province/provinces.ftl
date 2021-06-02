@@ -22,7 +22,7 @@
                 <th>Name</th>
                 <th>Phone Code</th>
                 <th>State</th>
-                <th>Actions</th>
+                <th></th>
             </tr>
             <#list items as item>
                 <tr id="${item.id}">
@@ -82,6 +82,15 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label class="control-label">Description</label>
+                                <div>
+                                    <textarea name="create-description"
+                                           class="form-control" placeholder="Type a few words (if you need)"
+                                              rows="3">
+                                    </textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <div>
                                     <button type="submit" class="btn btn-success">Create</button>
                                 </div>
@@ -133,6 +142,15 @@
                                             <option value="${state}">${state.name()}</option>
                                         </#list>
                                     </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label">Description</label>
+                                <div>
+                                    <textarea name="update-description"
+                                              class="form-control" placeholder="Type a few words (if you need)"
+                                              rows="3">
+                                    </textarea>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -195,6 +213,18 @@
                         <div>
                             <h4><b>State</b></h4>
                             <h5 class="view-state"></h5>
+                        </div>
+                        <div>
+                            <h4><b>Created At</b></h4>
+                            <h5 class="view-created-at"></h5>
+                        </div>
+                        <div>
+                            <h4><b>Modified At</b></h4>
+                            <h5 class="view-modified-at"></h5>
+                        </div>
+                        <div>
+                            <h4><b>Description</b></h4>
+                            <h5 class="view-description"></h5>
                         </div>
                     </div>
                 </div>

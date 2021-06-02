@@ -2,6 +2,7 @@ package com.chnu.pavel.telephone.dao.city.impls;
 
 import com.chnu.pavel.telephone.dao.city.interfaces.CityDAO;
 import com.chnu.pavel.telephone.model.City;
+import com.chnu.pavel.telephone.model.Province;
 import com.chnu.pavel.telephone.repository.city.CityRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -48,7 +49,8 @@ public class CityDAOImpl implements CityDAO {
     public City deleteById(Long id) {
         City deleted = findById(id);
         repository.deleteById(id);
-        return deleted;
+        if(!repository.findById(id).isPresent()) return deleted;
+        else return null;
     }
 
     @Override

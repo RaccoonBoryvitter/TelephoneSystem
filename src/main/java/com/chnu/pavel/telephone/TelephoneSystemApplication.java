@@ -35,6 +35,6 @@ public class TelephoneSystemApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-
+        System.out.println("cityRepo.findAll() = " + cityRepo.findAll());
     }
 }

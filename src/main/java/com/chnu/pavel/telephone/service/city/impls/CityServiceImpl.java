@@ -47,12 +47,12 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public City updateById(City city, Long id) {
-        return dao.updateById(city, id);
+        return dao.updateById(id, city);
     }
 
     @Override
     public String deleteById(Long id) {
-        return dao.deleteById(id);
+        return dao.deleteById(id).toString();
     }
 
 }

@@ -34,28 +34,29 @@ public class CityUiController {
     @RequestMapping("")
     public String findAll(Model model) {
         model.addAttribute("items", service.findAll());
-        model.addAttribute("provinces", provinceService.findAllProvinces());
+        model.addAttribute("provinces", provinceService.findAll());
         return "city/cities";
     }
 
     @GetMapping("/get/{id}")
     @ResponseBody
     public City findById(@PathVariable("id") String id) {
-        return service.findById(id);
+        return service.findById(Long.valueOf(id));
     }
 
     @GetMapping("/delete/{id}")
     public String deleteById( @PathVariable("id") String id) {
-        service.deleteById(id);
+        service.deleteById(Long.valueOf(id));
         return "redirect:/ui/cities";
     }
 
     @PostMapping("/create/")
-    public String createProvince(HttpServletRequest request) {
+    public String create(HttpServletRequest request) {
         City city = new City();
         city.setName(request.getParameter("create-name").trim());
         city.setPhoneCode(request.getParameter("create-phone-code").trim());
-        city.setProvince(provinceService.findProvinceById(request.getParameter("create-province")));
+        city.setProvince(provinceService.findById(Long.valueOf(request.getParameter("create-province"))));
+        city.setDescription(request.getParameter("create-description"));
         service.create(city);
         return "redirect:/ui/cities";
     }
@@ -65,8 +66,9 @@ public class CityUiController {
         City city = new City();
         city.setName(request.getParameter("update-name").trim());
         city.setPhoneCode(request.getParameter("update-phone-code").trim());
-        city.setProvince(provinceService.findProvinceById(request.getParameter("update-province")));
-        service.updateById(city, id);
+        city.setProvince(provinceService.findById(Long.valueOf(request.getParameter("create-province"))));
+        city.setDescription(request.getParameter("create-description"));
+        service.updateById(city, Long.valueOf(id));
         return "redirect:/ui/cities";
     }
 

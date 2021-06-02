@@ -34,6 +34,7 @@ public class ProvinceDAOImpl implements ProvinceDAO {
         Province upToDate = findById(id);
         upToDate.setName(province.getName());
         upToDate.setPhoneCode(province.getPhoneCode());
+        upToDate.setState(province.getState());
         upToDate.setModified_at(province.getModified_at());
         upToDate.setDescription(province.getDescription());
         return repository.save(upToDate);
