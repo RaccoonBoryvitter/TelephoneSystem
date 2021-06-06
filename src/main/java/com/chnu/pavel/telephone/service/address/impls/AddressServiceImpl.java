@@ -4,12 +4,10 @@ import com.chnu.pavel.telephone.dao.address.interfaces.AddressDAO;
 import com.chnu.pavel.telephone.model.Address;
 import com.chnu.pavel.telephone.service.address.interfaces.AddressService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-import java.sql.Date;
+import java.util.Date;
 import java.time.Instant;
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -21,12 +19,11 @@ import java.util.List;
  * @Version AddressServiceImpl: 1.0
  */
 
-@Service
+@Component
 @RequiredArgsConstructor
 public class AddressServiceImpl implements AddressService {
 
     private final AddressDAO addressDAO;
-
 
     @Override
     public Address findById(Long id) {
@@ -53,6 +50,10 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public List<Address> findAll() {
+        addressDAO.findAll().stream()
+                            .filter(a -> a.getDistrict() == null)
+                            .forEach(a -> addressDAO.deleteById(a.getId()));
+
         return addressDAO.findAll();
     }
 }

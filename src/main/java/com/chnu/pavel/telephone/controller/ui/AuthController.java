@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 
 @Controller
-public class HomeController {
+public class AuthController {
 
-    @RequestMapping("/home")
-    public String homepage() {
-        return "index";
+    @RequestMapping("/login")
+    public String loginPage() {
+        return "login";
     }
 
 }

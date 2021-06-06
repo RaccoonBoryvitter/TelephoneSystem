@@ -1,6 +1,8 @@
 package com.chnu.pavel.telephone.service.address.interfaces;
 
 import com.chnu.pavel.telephone.model.Address;
+import com.chnu.pavel.telephone.service.GenericService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -13,12 +15,7 @@ import java.util.List;
  * @Version AddressService: 1.0
  */
 
-public interface AddressService {
-
-    Address findById(Long id);
-    Address create(Address address);
-    Address updateById(Long id, Address address);
-    Address deleteById(Long id);
-    List<Address> findAll();
+@Service
+public interface AddressService extends GenericService<Address> {
 
 }

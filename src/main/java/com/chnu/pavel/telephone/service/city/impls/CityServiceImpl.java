@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+import java.time.Instant;
 import java.util.List;
 
 /**
@@ -37,6 +39,8 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public City create(City city) {
+        city.setCreated_at(Date.from(Instant.now()));
+        city.setModified_at(Date.from(Instant.now()));
         return dao.create(city);
     }
 
@@ -46,13 +50,14 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    public City updateById(City city, Long id) {
+    public City updateById(Long id, City city) {
+        city.setModified_at(Date.from(Instant.now()));
         return dao.updateById(id, city);
     }
 
     @Override
-    public String deleteById(Long id) {
-        return dao.deleteById(id).toString();
+    public City deleteById(Long id) {
+        return dao.deleteById(id);
     }
 
 }
