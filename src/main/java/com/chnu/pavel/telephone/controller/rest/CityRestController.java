@@ -3,8 +3,6 @@ package com.chnu.pavel.telephone.controller.rest;
 import com.chnu.pavel.telephone.model.City;
 import com.chnu.pavel.telephone.service.city.interfaces.CityService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,11 +40,11 @@ public class CityRestController {
 
     @PostMapping("/update/{id}")
     public City updateById( @RequestBody City city, @PathVariable("id") String id) {
-        return service.updateById(city, Long.valueOf(id));
+        return service.updateById(Long.valueOf(id), city);
     }
 
     @GetMapping("delete/{id}")
-    public String deleteById( @PathVariable("id") String id) {
+    public City deleteById(@PathVariable("id") String id) {
         return service.deleteById(Long.valueOf(id));
     }
 

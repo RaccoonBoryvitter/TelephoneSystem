@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.stereotype.Component;
 
-import java.sql.Date;
+import java.util.Date;
 import java.time.Instant;
 import java.util.List;
 

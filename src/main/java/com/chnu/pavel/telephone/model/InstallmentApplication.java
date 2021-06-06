@@ -39,11 +39,17 @@ public class InstallmentApplication {
     private Long id;
     private String applierFullName;
     private Gender applierGender;
-    private LocalDate applierBirthDay;
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd")
+    @DateTimeFormat(style="yyyy-MM-dd")
+    @Field("applierBirthDay")
+    private Date applierBirthDay;
     private PrivilegeType applierPrivilegeType;
     private int order;
     private QueueType queueType;
-    private LocalDateTime installationTime;
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss.SSS")
+    @DateTimeFormat(style="yyyy-MM-dd HH:mm:ss.SSS")
+    @Field("installationTime")
+    private Date installationTime;
     private boolean cableAvailability;
     private boolean channelAvailability;
     @DBRef

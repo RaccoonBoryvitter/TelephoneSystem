@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Hotline Inc. | Auth</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+    <link rel="icon" type="image/x-icon" sizes="64x64 32x32 24x24 16x16" th:href="@{/img/favicon.ico}">
+</head>
+<body>
+
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form action="#" method="post">
+                <h1>Create Account</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                </div>
+                <span>or use your email for registration</span>
+                <div class="tooltip">
+                    <ul class="tooltip-text" id="username-tooltip">
+                        <li id="usr-length">More than 3 characters</li>
+                        <li id="usr-constraints">Can contain only: </li>
+                        <ul>
+                            <li id="usr-up">uppercase letters</li>
+                            <li id="usr-lo">lowercase letters</li>
+                            <li id="usr-us">underscore</li>
+                            <li id="usr-no">numbers</li>
+                        </ul>
+                    </ul>
+                </div>
+                <input id="username-signup" type="text" placeholder="Username" required/>
+                <div class="tooltip">
+                    <span class="tooltip-text" id="email-tooltip"></span>
+                </div>
+                <input id="email-signup" type="email" placeholder="Email" required/>
+                <div class="tooltip">
+                    <ul class="tooltip-text" id="pwd-tooltip">
+                        <li id="pwd-length">More than 8 characters</li>
+                        <li id="pwd-constraints">Must contain: </li>
+                        <ul>
+                            <li id="pwd-up">uppercase letters</li>
+                            <li id="pwd-lo">lowercase letters</li>
+                            <li id="pwd-no">numbers</li>
+                        </ul>
+                    </ul>
+                </div>
+                <input id="pwd-signup" type="password" placeholder="Password" required/>
+                <button id="sign-up" disabled>Sign Up</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form th:action="@{/login}" method="post">
+                <h1>Sign in</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                </div>
+                <span>or use your account</span>
+                <input type="text" name="username" placeholder="Username" required/>
+                <input type="password" name="password" placeholder="Password" required/>
+                <a href="#">Forgot your password?</a>
+                <button>Sign In</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button class="ghost" id="signIn">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, User!</h1>
+                    <p>Enter your personal details and enter the system</p>
+                    <button class="ghost" id="signUp">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="company">
+        <img class="company-logo" th:src="@{/img/company_logo.png}" alt="Logo">
+        <p class="company-name">Hotlines Inc.<p/>
+    </div>
+    <div id="particles"></div>
+
+    <script th:src="@{/js/particles.js}"></script>
+    <script th:src="@{/js/script.js}"></script>
+
+</body>
+
+</html>

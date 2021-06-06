@@ -3,6 +3,7 @@ package com.chnu.pavel.telephone.dao.address.interfaces;
 import com.chnu.pavel.telephone.dao.GenericDAO;
 import com.chnu.pavel.telephone.model.Address;
 import com.chnu.pavel.telephone.model.District;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -15,15 +16,7 @@ import java.util.List;
  * @Version AddressDAO: 1.0
  */
 
+@Repository
 public interface AddressDAO extends GenericDAO<Address> {
-
-    // additional read operations
-    List<Address> findByDistrict(District district);
-
-    List<Address> findByStreet(String street);
-
-    Address findByBuilding(String building);
-
-    List<Address> findByZipCode(String zipCode);
 
 }

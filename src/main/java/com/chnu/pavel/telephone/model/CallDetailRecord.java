@@ -38,8 +38,14 @@ public class CallDetailRecord {
     private PhoneNumber from;
     @DBRef
     private PhoneNumber to;
-    private LocalDateTime startedAt;
-    private LocalDateTime finishedAt;
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss.SSS")
+    @DateTimeFormat(style="yyyy-MM-dd HH:mm:ss.SSS")
+    @Field("startedAt")
+    private Date startedAt;
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss.SSS")
+    @DateTimeFormat(style="yyyy-MM-dd HH:mm:ss.SSS")
+    @Field("finishedAt")
+    private Date finishedAt;
     private ConversationType conversationType;
     @DBRef
     private TelephoneExchange telephoneExchange;

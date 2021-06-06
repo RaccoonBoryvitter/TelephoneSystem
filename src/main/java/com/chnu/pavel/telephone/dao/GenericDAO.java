@@ -15,7 +15,7 @@ public interface GenericDAO<EntityObject> {
 
     EntityObject findById(Long id);
     EntityObject create(EntityObject entityObj);
-    EntityObject updateById(Long id, EntityObject entityObject);
+    EntityObject updateById(Long id, EntityObject entityObj);
     EntityObject deleteById(Long id);
     List<EntityObject> findAll();
 

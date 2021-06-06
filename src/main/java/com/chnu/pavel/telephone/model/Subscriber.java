@@ -37,7 +37,10 @@ public class Subscriber {
     private Long id;
     private String fullName;
     private Gender gender;
-    private LocalDate dateOfBirth;
+    @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd")
+    @DateTimeFormat(style="yyyy-MM-dd")
+    @Field("dateOfBirth")
+    private Date dateOfBirth;
     private PrivilegeType privilegeType;
     @DBRef
     private ConnectedPhone connectedPhone;
