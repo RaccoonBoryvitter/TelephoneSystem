@@ -1,6 +1,8 @@
 package com.chnu.pavel.telephone.service.installmentapplication.impls;
 
 import com.chnu.pavel.telephone.dao.installmentapplication.interfaces.InstallmentApplicationDAO;
+import com.chnu.pavel.telephone.helper.SequenceGeneratorService;
+import com.chnu.pavel.telephone.model.Agency;
 import com.chnu.pavel.telephone.model.InstallmentApplication;
 import com.chnu.pavel.telephone.service.installmentapplication.interfaces.InstallmentApplicationService;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +26,7 @@ import java.util.List;
 public class InstallmentApplicationServiceImpl implements InstallmentApplicationService {
 
     private final InstallmentApplicationDAO dao;
+    private final SequenceGeneratorService generatorService;
 
     @Override
     public InstallmentApplication findById(Long id) {
@@ -38,6 +41,7 @@ public class InstallmentApplicationServiceImpl implements InstallmentApplication
 
     @Override
     public InstallmentApplication create(InstallmentApplication entityObj) {
+        entityObj.setId(generatorService.getSequenceNumber(InstallmentApplication.SEQUENCE_NAME));
         entityObj.setCreated_at(Date.from(Instant.now()));
         entityObj.setModified_at(Date.from(Instant.now()));
         return dao.create(entityObj);

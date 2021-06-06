@@ -1,6 +1,8 @@
 package com.chnu.pavel.telephone.service.telephoneexchange.impls;
 
 import com.chnu.pavel.telephone.dao.telephoneexchange.interfaces.TelephoneExchangeDAO;
+import com.chnu.pavel.telephone.helper.SequenceGeneratorService;
+import com.chnu.pavel.telephone.model.Agency;
 import com.chnu.pavel.telephone.model.TelephoneExchange;
 import com.chnu.pavel.telephone.service.telephoneexchange.interfaces.TelephoneExchangeService;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +26,7 @@ import java.util.List;
 public class TelephoneExchangeServiceImpl implements TelephoneExchangeService {
 
     private final TelephoneExchangeDAO dao;
+    private final SequenceGeneratorService generatorService;
 
     @Override
     public TelephoneExchange findById(Long id) {
@@ -38,6 +41,7 @@ public class TelephoneExchangeServiceImpl implements TelephoneExchangeService {
 
     @Override
     public TelephoneExchange create(TelephoneExchange entityObj) {
+        entityObj.setId(generatorService.getSequenceNumber(TelephoneExchange.SEQUENCE_NAME));
         entityObj.setCreated_at(Date.from(Instant.now()));
         entityObj.setModified_at(Date.from(Instant.now()));
         return dao.create(entityObj);

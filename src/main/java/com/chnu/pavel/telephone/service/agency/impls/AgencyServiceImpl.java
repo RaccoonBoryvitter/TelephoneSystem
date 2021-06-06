@@ -1,6 +1,7 @@
 package com.chnu.pavel.telephone.service.agency.impls;
 
 import com.chnu.pavel.telephone.dao.agency.interfaces.AgencyDAO;
+import com.chnu.pavel.telephone.helper.SequenceGeneratorService;
 import com.chnu.pavel.telephone.model.Agency;
 import com.chnu.pavel.telephone.service.agency.interfaces.AgencyService;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,7 @@ import java.util.List;
 public class AgencyServiceImpl implements AgencyService {
 
     private final AgencyDAO dao;
+    private final SequenceGeneratorService generatorService;
 
     @Override
     public Agency findById(Long id) {
@@ -38,6 +40,7 @@ public class AgencyServiceImpl implements AgencyService {
 
     @Override
     public Agency create(Agency entityObj) {
+        entityObj.setId(generatorService.getSequenceNumber(Agency.SEQUENCE_NAME));
         entityObj.setCreated_at(Date.from(Instant.now()));
         entityObj.setModified_at(Date.from(Instant.now()));
         return dao.create(entityObj);

@@ -1,6 +1,8 @@
 package com.chnu.pavel.telephone.service.establishment.impls;
 
 import com.chnu.pavel.telephone.dao.establishment.interfaces.EstablishmentDAO;
+import com.chnu.pavel.telephone.helper.SequenceGeneratorService;
+import com.chnu.pavel.telephone.model.Agency;
 import com.chnu.pavel.telephone.model.Establishment;
 import com.chnu.pavel.telephone.service.establishment.interfaces.EstablishmentService;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +26,7 @@ import java.util.List;
 public class EstablishmentServiceImpl implements EstablishmentService {
 
     private final EstablishmentDAO dao;
+    private final SequenceGeneratorService generatorService;
 
     @Override
     public Establishment findById(Long id) {
@@ -38,6 +41,7 @@ public class EstablishmentServiceImpl implements EstablishmentService {
 
     @Override
     public Establishment create(Establishment entityObj) {
+        entityObj.setId(generatorService.getSequenceNumber(Establishment.SEQUENCE_NAME));
         entityObj.setCreated_at(Date.from(Instant.now()));
         entityObj.setModified_at(Date.from(Instant.now()));
         return dao.create(entityObj);

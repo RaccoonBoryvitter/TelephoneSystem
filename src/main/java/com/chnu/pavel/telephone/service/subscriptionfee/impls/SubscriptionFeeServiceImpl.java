@@ -1,6 +1,8 @@
 package com.chnu.pavel.telephone.service.subscriptionfee.impls;
 
 import com.chnu.pavel.telephone.dao.subscriptionfee.interfaces.SubscriptionFeeDAO;
+import com.chnu.pavel.telephone.helper.SequenceGeneratorService;
+import com.chnu.pavel.telephone.model.Agency;
 import com.chnu.pavel.telephone.model.SubscriptionFee;
 import com.chnu.pavel.telephone.service.subscriptionfee.interfaces.SubscriptionFeeService;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +26,7 @@ import java.util.List;
 public class SubscriptionFeeServiceImpl implements SubscriptionFeeService {
 
     private final SubscriptionFeeDAO dao;
+    private final SequenceGeneratorService generatorService;
 
     @Override
     public SubscriptionFee findById(Long id) {
@@ -38,6 +41,7 @@ public class SubscriptionFeeServiceImpl implements SubscriptionFeeService {
 
     @Override
     public SubscriptionFee create(SubscriptionFee entityObj) {
+        entityObj.setId(generatorService.getSequenceNumber(SubscriptionFee.SEQUENCE_NAME));
         entityObj.setCreated_at(Date.from(Instant.now()));
         entityObj.setModified_at(Date.from(Instant.now()));
         return dao.create(entityObj);

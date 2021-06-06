@@ -1,6 +1,8 @@
 package com.chnu.pavel.telephone.service.calldetailrecord.impls;
 
 import com.chnu.pavel.telephone.dao.calldetailrecord.interfaces.CallDetailRecordDAO;
+import com.chnu.pavel.telephone.helper.SequenceGeneratorService;
+import com.chnu.pavel.telephone.model.Agency;
 import com.chnu.pavel.telephone.model.CallDetailRecord;
 import com.chnu.pavel.telephone.service.calldetailrecord.interfaces.CallDetailRecordService;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +26,7 @@ import java.util.List;
 public class CallDetailRecordServiceImpl implements CallDetailRecordService {
 
     private final CallDetailRecordDAO dao;
+    private final SequenceGeneratorService generatorService;
 
     @Override
     public CallDetailRecord findById(Long id) {
@@ -38,6 +41,7 @@ public class CallDetailRecordServiceImpl implements CallDetailRecordService {
 
     @Override
     public CallDetailRecord create(CallDetailRecord entityObj) {
+        entityObj.setId(generatorService.getSequenceNumber(CallDetailRecord.SEQUENCE_NAME));
         entityObj.setCreated_at(Date.from(Instant.now()));
         entityObj.setModified_at(Date.from(Instant.now()));
         return dao.create(entityObj);

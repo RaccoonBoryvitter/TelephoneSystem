@@ -1,6 +1,8 @@
 package com.chnu.pavel.telephone.service.city.impls;
 
 import com.chnu.pavel.telephone.dao.city.interfaces.CityDAO;
+import com.chnu.pavel.telephone.helper.SequenceGeneratorService;
+import com.chnu.pavel.telephone.model.Agency;
 import com.chnu.pavel.telephone.model.City;
 import com.chnu.pavel.telephone.service.city.interfaces.CityService;
 import lombok.AllArgsConstructor;
@@ -27,6 +29,7 @@ import java.util.List;
 public class CityServiceImpl implements CityService {
 
     private final CityDAO dao;
+    private final SequenceGeneratorService generatorService;
 
     @Override
     public List<City> findAll() {
@@ -39,6 +42,7 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public City create(City city) {
+        city.setId(generatorService.getSequenceNumber(City.SEQUENCE_NAME));
         city.setCreated_at(Date.from(Instant.now()));
         city.setModified_at(Date.from(Instant.now()));
         return dao.create(city);

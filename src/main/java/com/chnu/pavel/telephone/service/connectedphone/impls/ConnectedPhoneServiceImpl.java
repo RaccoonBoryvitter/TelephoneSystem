@@ -1,6 +1,8 @@
 package com.chnu.pavel.telephone.service.connectedphone.impls;
 
 import com.chnu.pavel.telephone.dao.connectedphone.interfaces.ConnectedPhoneDAO;
+import com.chnu.pavel.telephone.helper.SequenceGeneratorService;
+import com.chnu.pavel.telephone.model.Agency;
 import com.chnu.pavel.telephone.model.ConnectedPhone;
 import com.chnu.pavel.telephone.service.connectedphone.interfaces.ConnectedPhoneService;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +26,7 @@ import java.util.List;
 public class ConnectedPhoneServiceImpl implements ConnectedPhoneService {
 
     private final ConnectedPhoneDAO dao;
+    private final SequenceGeneratorService generatorService;
 
     @Override
     public ConnectedPhone findById(Long id) {
@@ -38,6 +41,7 @@ public class ConnectedPhoneServiceImpl implements ConnectedPhoneService {
 
     @Override
     public ConnectedPhone create(ConnectedPhone entityObj) {
+        entityObj.setId(generatorService.getSequenceNumber(ConnectedPhone.SEQUENCE_NAME));
         entityObj.setCreated_at(Date.from(Instant.now()));
         entityObj.setModified_at(Date.from(Instant.now()));
         return dao.create(entityObj);

@@ -1,6 +1,8 @@
 package com.chnu.pavel.telephone.service.invoice.impls;
 
 import com.chnu.pavel.telephone.dao.invoice.interfaces.InvoiceDAO;
+import com.chnu.pavel.telephone.helper.SequenceGeneratorService;
+import com.chnu.pavel.telephone.model.Agency;
 import com.chnu.pavel.telephone.model.Invoice;
 import com.chnu.pavel.telephone.service.invoice.interfaces.InvoiceService;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +26,7 @@ import java.util.List;
 public class InvoiceServiceImpl implements InvoiceService {
 
     private final InvoiceDAO dao;
+    private final SequenceGeneratorService generatorService;
 
     @Override
     public Invoice findById(Long id) {
@@ -38,6 +41,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 
     @Override
     public Invoice create(Invoice entityObj) {
+        entityObj.setId(generatorService.getSequenceNumber(Invoice.SEQUENCE_NAME));
         entityObj.setCreated_at(Date.from(Instant.now()));
         entityObj.setModified_at(Date.from(Instant.now()));
         return dao.create(entityObj);

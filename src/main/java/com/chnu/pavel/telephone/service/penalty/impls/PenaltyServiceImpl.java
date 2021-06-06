@@ -1,6 +1,8 @@
 package com.chnu.pavel.telephone.service.penalty.impls;
 
 import com.chnu.pavel.telephone.dao.penalty.interfaces.PenaltyDAO;
+import com.chnu.pavel.telephone.helper.SequenceGeneratorService;
+import com.chnu.pavel.telephone.model.Agency;
 import com.chnu.pavel.telephone.model.Penalty;
 import com.chnu.pavel.telephone.service.penalty.interfaces.PenaltyService;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +26,7 @@ import java.util.List;
 public class PenaltyServiceImpl implements PenaltyService {
 
     private final PenaltyDAO dao;
+    private final SequenceGeneratorService generatorService;
 
     @Override
     public Penalty findById(Long id) {
@@ -38,6 +41,7 @@ public class PenaltyServiceImpl implements PenaltyService {
 
     @Override
     public Penalty create(Penalty entityObj) {
+        entityObj.setId(generatorService.getSequenceNumber(Penalty.SEQUENCE_NAME));
         entityObj.setCreated_at(Date.from(Instant.now()));
         entityObj.setModified_at(Date.from(Instant.now()));
         return dao.create(entityObj);

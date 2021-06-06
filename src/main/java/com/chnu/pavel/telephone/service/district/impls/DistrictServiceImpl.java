@@ -1,6 +1,7 @@
 package com.chnu.pavel.telephone.service.district.impls;
 
 import com.chnu.pavel.telephone.dao.district.interfaces.DistrictDAO;
+import com.chnu.pavel.telephone.helper.SequenceGeneratorService;
 import com.chnu.pavel.telephone.model.District;
 import com.chnu.pavel.telephone.service.district.interfaces.DistrictService;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,7 @@ import java.util.List;
 public class DistrictServiceImpl implements DistrictService {
 
     private final DistrictDAO dao;
+    private final SequenceGeneratorService generatorService;
 
     @Override
     public District findById(Long id) {
@@ -38,6 +40,7 @@ public class DistrictServiceImpl implements DistrictService {
 
     @Override
     public District create(District entityObj) {
+        entityObj.setId(generatorService.getSequenceNumber(District.SEQUENCE_NAME));
         entityObj.setCreated_at(Date.from(Instant.now()));
         entityObj.setModified_at(Date.from(Instant.now()));
         return dao.create(entityObj);

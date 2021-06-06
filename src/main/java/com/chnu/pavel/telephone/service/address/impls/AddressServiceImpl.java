@@ -1,7 +1,9 @@
 package com.chnu.pavel.telephone.service.address.impls;
 
 import com.chnu.pavel.telephone.dao.address.interfaces.AddressDAO;
+import com.chnu.pavel.telephone.helper.SequenceGeneratorService;
 import com.chnu.pavel.telephone.model.Address;
+import com.chnu.pavel.telephone.model.Province;
 import com.chnu.pavel.telephone.service.address.interfaces.AddressService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -24,6 +26,7 @@ import java.util.List;
 public class AddressServiceImpl implements AddressService {
 
     private final AddressDAO addressDAO;
+    private final SequenceGeneratorService generatorService;
 
     @Override
     public Address findById(Long id) {
@@ -32,6 +35,7 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public Address create(Address address) {
+        address.setId(generatorService.getSequenceNumber(Address.SEQUENCE_NAME));
         address.setCreated_at(Date.from(Instant.now()));
         address.setModified_at(Date.from(Instant.now()));
         return addressDAO.create(address);

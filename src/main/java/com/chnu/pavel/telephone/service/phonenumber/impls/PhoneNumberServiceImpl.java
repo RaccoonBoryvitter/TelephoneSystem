@@ -1,6 +1,8 @@
 package com.chnu.pavel.telephone.service.phonenumber.impls;
 
 import com.chnu.pavel.telephone.dao.phonenumber.interfaces.PhoneNumberDAO;
+import com.chnu.pavel.telephone.helper.SequenceGeneratorService;
+import com.chnu.pavel.telephone.model.Agency;
 import com.chnu.pavel.telephone.model.PhoneNumber;
 import com.chnu.pavel.telephone.service.phonenumber.interfaces.PhoneNumberService;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +27,7 @@ import java.util.List;
 public class PhoneNumberServiceImpl implements PhoneNumberService {
 
     private final PhoneNumberDAO dao;
+    private final SequenceGeneratorService generatorService;
 
     @Override
     public PhoneNumber findById(Long id) {
@@ -39,6 +42,7 @@ public class PhoneNumberServiceImpl implements PhoneNumberService {
 
     @Override
     public PhoneNumber create(PhoneNumber entityObj) {
+        entityObj.setId(generatorService.getSequenceNumber(PhoneNumber.SEQUENCE_NAME));
         entityObj.setCreated_at(Date.from(Instant.now()));
         entityObj.setModified_at(Date.from(Instant.now()));
         return dao.create(entityObj);

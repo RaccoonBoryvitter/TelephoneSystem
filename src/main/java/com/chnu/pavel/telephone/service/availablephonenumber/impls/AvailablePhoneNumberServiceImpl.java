@@ -1,6 +1,8 @@
 package com.chnu.pavel.telephone.service.availablephonenumber.impls;
 
 import com.chnu.pavel.telephone.dao.availablephonenumber.interfaces.AvailablePhoneNumberDAO;
+import com.chnu.pavel.telephone.helper.SequenceGeneratorService;
+import com.chnu.pavel.telephone.model.Agency;
 import com.chnu.pavel.telephone.model.AvailablePhoneNumber;
 import com.chnu.pavel.telephone.service.availablephonenumber.interfaces.AvailablePhoneNumberService;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +26,7 @@ import java.util.List;
 public class AvailablePhoneNumberServiceImpl implements AvailablePhoneNumberService {
 
     private final AvailablePhoneNumberDAO dao;
+    private final SequenceGeneratorService generatorService;
 
     @Override
     public AvailablePhoneNumber findById(Long id) {
@@ -38,6 +41,7 @@ public class AvailablePhoneNumberServiceImpl implements AvailablePhoneNumberServ
 
     @Override
     public AvailablePhoneNumber create(AvailablePhoneNumber entityObj) {
+        entityObj.setId(generatorService.getSequenceNumber(AvailablePhoneNumber.SEQUENCE_NAME));
         entityObj.setCreated_at(Date.from(Instant.now()));
         entityObj.setModified_at(Date.from(Instant.now()));
         return dao.create(entityObj);
