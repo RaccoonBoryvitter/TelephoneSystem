@@ -8,6 +8,7 @@ const usernameSignup = document.getElementById('username-signup');
 const emailSignup = document.getElementById('email-signup');
 const pwdSignup = document.getElementById('pwd-signup');
 const signUpBtn = document.getElementById('sign-up');
+const singInBtn = document.getElementById('sign-in');
 
 const usrToolTip = document.getElementById("username-tooltip");
 const usrLength = document.getElementById("usr-length");
@@ -82,6 +83,10 @@ pwdSignup.addEventListener('focus', () => {
 pwdSignup.addEventListener('blur', () => {
     if(pwdToolTip.classList.contains("show")) pwdToolTip.classList.remove("show");
 });
+
+singInBtn.addEventListener('click', () => {
+    window.localStorage.setItem("hello", "world");
+})
 
 function validateUsername(usernameString) {
     let lowercase = /[a-z]/g;

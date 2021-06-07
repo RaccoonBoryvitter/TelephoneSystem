@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
  */
 
 @Controller
-@RequestMapping("/ui/cities")
+@RequestMapping("/cities")
 @RequiredArgsConstructor
 public class CityUiController {
 
@@ -47,7 +47,7 @@ public class CityUiController {
     @GetMapping("/delete/{id}")
     public String deleteById( @PathVariable("id") String id) {
         service.deleteById(Long.valueOf(id));
-        return "redirect:/ui/cities";
+        return "redirect:/cities";
     }
 
     @PostMapping("/create/")
@@ -58,7 +58,7 @@ public class CityUiController {
         city.setProvince(provinceService.findById(Long.valueOf(request.getParameter("create-province"))));
         city.setDescription(request.getParameter("create-description"));
         service.create(city);
-        return "redirect:/ui/cities";
+        return "redirect:/cities";
     }
 
     @PostMapping("/update/{id}")
@@ -68,8 +68,8 @@ public class CityUiController {
         city.setPhoneCode(request.getParameter("update-phone-code").trim());
         city.setProvince(provinceService.findById(Long.valueOf(request.getParameter("create-province"))));
         city.setDescription(request.getParameter("create-description"));
-        service.updateById(city, Long.valueOf(id));
-        return "redirect:/ui/cities";
+        service.updateById(Long.valueOf(id), city);
+        return "redirect:/cities";
     }
 
 }

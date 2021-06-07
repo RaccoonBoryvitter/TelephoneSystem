@@ -39,8 +39,10 @@ public class Address {
     @Id
     private Long id;
     @DBRef
+    @Field("districtId")
     private District district;
     private String street;
+    @Field("buildingNo")
     private String building;
     private String apartmentNo;
     private String zipCode;

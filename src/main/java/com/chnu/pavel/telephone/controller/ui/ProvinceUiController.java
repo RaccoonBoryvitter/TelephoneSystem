@@ -22,7 +22,7 @@ import java.util.Arrays;
  */
 
 @Controller
-@RequestMapping("/ui/provinces")
+@RequestMapping("/provinces")
 @RequiredArgsConstructor
 public class ProvinceUiController {
 
@@ -44,7 +44,7 @@ public class ProvinceUiController {
     @GetMapping("/delete/{id}")
     public String deleteById( @PathVariable("id") String id) {
         service.deleteById(Long.valueOf(id));
-        return "redirect:/ui/provinces";
+        return "redirect:/provinces";
     }
 
     @PostMapping("/create/")
@@ -55,7 +55,7 @@ public class ProvinceUiController {
         province.setState(State.valueOf(request.getParameter("create-state")));
         province.setDescription(request.getParameter("create-description"));
         service.create(province);
-        return "redirect:/ui/provinces";
+        return "redirect:/provinces";
     }
 
     @PostMapping("/update/{id}")
@@ -66,7 +66,7 @@ public class ProvinceUiController {
         province.setState(State.valueOf(request.getParameter("update-state")));
         province.setDescription(request.getParameter("update-description"));
         service.updateById(Long.valueOf(id), province);
-        return "redirect:/ui/provinces";
+        return "redirect:/provinces";
     }
 
 }

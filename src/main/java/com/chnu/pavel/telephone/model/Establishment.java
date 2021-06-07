@@ -35,6 +35,7 @@ public class Establishment {
     private Long id;
     private String name;
     @DBRef
+    @Field("telephoneExchangeId")
     private TelephoneExchange telephoneExchange;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss.SSS")

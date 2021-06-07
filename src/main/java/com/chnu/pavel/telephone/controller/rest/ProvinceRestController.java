@@ -28,7 +28,7 @@ public class ProvinceRestController {
 
     private final ProvinceService service;
 
-    @RequestMapping("/get/all")
+    @RequestMapping("/get/all/")
     public List<Province> findAll() {
         return service.findAll();
     }

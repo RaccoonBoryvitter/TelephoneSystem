@@ -36,8 +36,10 @@ public class PhoneNumber {
     private Long id;
     private String number;
     @DBRef
+    @Field("addressId")
     private Address address;
     @DBRef
+    @Field("telephoneExchangeId")
     private TelephoneExchange telephoneExchange;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss.SSS")

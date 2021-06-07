@@ -48,6 +48,7 @@ public class CallDetailRecord {
     private Date finishedAt;
     private ConversationType conversationType;
     @DBRef
+    @Field("telephoneExchangeId")
     private TelephoneExchange telephoneExchange;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss.SSS")

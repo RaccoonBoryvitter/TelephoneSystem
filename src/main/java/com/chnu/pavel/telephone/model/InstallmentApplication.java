@@ -48,11 +48,12 @@ public class InstallmentApplication {
     private QueueType queueType;
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss.SSS")
     @DateTimeFormat(style="yyyy-MM-dd HH:mm:ss.SSS")
-    @Field("installationTime")
+    @Field("installTime")
     private Date installationTime;
     private boolean cableAvailability;
     private boolean channelAvailability;
     @DBRef
+    @Field("availableNumberId")
     private AvailablePhoneNumber availableNumber;
     private double cost;
 

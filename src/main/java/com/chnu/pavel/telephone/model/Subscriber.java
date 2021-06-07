@@ -42,7 +42,9 @@ public class Subscriber {
     @Field("dateOfBirth")
     private Date dateOfBirth;
     private PrivilegeType privilegeType;
+    private double balance;
     @DBRef
+    @Field("connectedPhoneId")
     private ConnectedPhone connectedPhone;
     private boolean intercityAccess;
 

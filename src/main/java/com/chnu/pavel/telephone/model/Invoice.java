@@ -39,10 +39,13 @@ public class Invoice {
     @Id
     private Long id;
     @DBRef
+    @Field("subscriberId")
     private Subscriber subscriber;
     @DBRef
+    @Field("subscriptionFeeId")
     private SubscriptionFee subscriptionFee;
     @DBRef
+    @Field("penaltyId")
     private Penalty penalty;
     private double totalCost;
 

@@ -37,7 +37,8 @@ public class District {
     private Long   id;
     private String   name;
     @DBRef
-    private City     city;
+    @Field("cityId")
+    private City city;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss.SSS")
     @DateTimeFormat(style="yyyy-MM-dd HH:mm:ss.SSS")

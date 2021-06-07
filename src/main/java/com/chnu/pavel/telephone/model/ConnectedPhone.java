@@ -38,8 +38,10 @@ public class ConnectedPhone {
     @Id
     private Long id;
     @DBRef
+    @Field("phoneId")
     private Phone phone;
     @DBRef
+    @Field("numberId")
     private PhoneNumber phoneNumber;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss.SSS")

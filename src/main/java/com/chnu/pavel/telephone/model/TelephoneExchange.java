@@ -36,6 +36,7 @@ public class TelephoneExchange {
     private Long id;
     private String codeName;
     @DBRef
+    @Field("addressId")
     private Address address;
     private StationType stationType;
     private short availableCables;

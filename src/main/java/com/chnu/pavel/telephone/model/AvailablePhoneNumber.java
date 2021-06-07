@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -34,9 +35,11 @@ public class AvailablePhoneNumber {
     @Transient
     public static final String SEQUENCE_NAME = "availablePhoneNumbers";
 
+    @Id
     private Long id;
     private String number;
     @DBRef
+    @Field("telephoneExchangeId")
     private TelephoneExchange telephoneExchange;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss.SSS")

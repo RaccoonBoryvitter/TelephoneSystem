@@ -20,4 +20,9 @@ public class AuthController {
         return "login";
     }
 
+    @RequestMapping("/")
+    public String showHomePage() {
+        return "index";
+    }
+
 }
