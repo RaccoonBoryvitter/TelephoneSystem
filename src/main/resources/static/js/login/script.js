@@ -205,6 +205,13 @@ function enableSignUp(usr, email, pwd) {
     signUpBtn.disabled = !((usr && email) && pwd);
 }
 
+$(".alert-close").click(function() {
+    $(this)
+        .parent(".alert")
+        .fadeOut();
+});
+
+
 particlesJS('particles',
 
     {
