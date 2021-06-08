@@ -30,7 +30,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Document(collection = "addresses")
+@Document("addresses")
 public class Address {
 
     @Transient
@@ -39,7 +39,6 @@ public class Address {
     @Id
     private Long id;
     @DBRef
-    @Field("districtId")
     private District district;
     private String street;
     @Field("buildingNo")

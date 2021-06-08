@@ -1,5 +1,6 @@
 package com.chnu.pavel.telephone.model;
 
+import com.chnu.pavel.telephone.security.validation.ValidEmail;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,6 +14,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -34,14 +37,32 @@ import java.util.Set;
 public class User {
 
     @Id
+    @NotNull
+    @NotEmpty
     private Long id;
+
+    @NotNull
+    @NotEmpty
     @Indexed(unique = true, direction = IndexDirection.DESCENDING)
     private String username;
+
+    @NotNull
+    @NotEmpty
     private String password;
-    @Indexed(unique = true, direction = IndexDirection.DESCENDING)
+
+
+    @ValidEmail
+    @NotNull
+    @NotEmpty
     private String email;
+
+    @NotNull
+    @NotEmpty
     @DBRef
     private Role role;
+
+    @NotNull
+    @NotEmpty
     private boolean enabled;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss.SSS")
