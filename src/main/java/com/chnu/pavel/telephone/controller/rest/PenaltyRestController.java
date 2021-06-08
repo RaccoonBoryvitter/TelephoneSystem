@@ -23,12 +23,12 @@ public class PenaltyRestController {
     
     private final PenaltyService service;
 
-    @RequestMapping("/get/all/")
+    @GetMapping("/get/all")
     public List<Penalty> findAll() {
         return service.findAll();
     }
 
-    @PostMapping("/create/")
+    @PostMapping("/create")
     public Penalty create( @RequestBody Penalty penalty) {
         return service.create(penalty);
     }
@@ -38,12 +38,12 @@ public class PenaltyRestController {
         return service.findById(Long.valueOf(id));
     }
 
-    @PostMapping("/update/{id}")
+    @PutMapping("/update/{id}")
     public Penalty updateById( @RequestBody Penalty penalty, @PathVariable("id") String id) {
         return service.updateById(Long.valueOf(id), penalty);
     }
 
-    @GetMapping("delete/{id}")
+    @DeleteMapping("delete/{id}")
     public Penalty deleteById(@PathVariable("id") String id) {
         return service.deleteById(Long.valueOf(id));
     }

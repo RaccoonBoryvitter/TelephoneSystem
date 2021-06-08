@@ -1,6 +1,7 @@
 package com.chnu.pavel.telephone.dao.district.impls;
 
 import com.chnu.pavel.telephone.dao.district.interfaces.DistrictDAO;
+import com.chnu.pavel.telephone.model.City;
 import com.chnu.pavel.telephone.model.District;
 import com.chnu.pavel.telephone.model.Province;
 import com.chnu.pavel.telephone.repository.district.DistrictRepository;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -56,5 +58,15 @@ public class DistrictDAOImpl implements DistrictDAO {
     @Override
     public List<District> findAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public Optional<District> findByName(String name) {
+        return repository.findByName(name);
+    }
+
+    @Override
+    public Optional<District> findByCity(City city) {
+        return repository.findByCity(city);
     }
 }

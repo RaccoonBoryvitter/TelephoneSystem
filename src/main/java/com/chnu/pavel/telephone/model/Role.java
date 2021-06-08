@@ -28,6 +28,6 @@ public class Role {
     @Id
     private Long id;
     @Indexed(unique = true, direction = IndexDirection.DESCENDING)
-    private String role;
+    private String name;
 
 }

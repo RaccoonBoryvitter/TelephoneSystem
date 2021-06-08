@@ -1,100 +1,116 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/css/index.css}">
+    <script th:src="@{https://code.jquery.com/jquery-3.6.0.min.js}"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/loader.css}">
     <title>Hotline Inc. | Home</title>
 </head>
 <body>
-    <nav class="navbar">
+
+    <div class="loader">
+        <img th:src="@{/img/loader.gif}" alt="Loading">
+    </div>
+
+    <nav class="navBar">
         <img class="logo" th:src="@{/img/logo.png}" alt="Logo" >
         <ul class="links">
-            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/dashboard}">Home</a></li>
             <li><a th:href="@{/tests}">Tests</a></li>
-            <li><a th:href="@{/api}">API</a></li>
+            <li><a th:href="@{/api/v1/documentation}">API</a></li>
             <li><a th:href="@{/documentation}">Documentation</a></li>
             <li><a th:href="@{/contacts}">Contacts</a></li>
         </ul>
 
         <div class="account">
-            <button class="user-btn">Logged as <b>Admin</b></button>
+            <button class="user-btn">
+                Logged as <b sec:authentication="name">Username</b></button>
 
             <div class="menu">
                 <a th:href="@{#}">Edit</a>
                 <a th:href="@{#}">Change Password</a>
-                <a th:href="@{#}">Log out</a>
+                <a th:href="@{/logout}">Log out</a>
             </div>
         </div>
     </nav>
 
+    <div class="welcome">
+        Welcome, <b sec:authentication="name">Username</b>
+    </div>
+
     <div class="tile-group">
-        <div class="tile" onclick="window.location.href='/provinces'">
+        <div class="tile" onclick="window.location.href='/provinces/'">
             <img th:src="@{/img/province.png}" alt="Provinces" />
-            <a class="tile-link" th:href="@{/provinces}">Provinces</a>
+            <a class="tile-link" th:href="@{/provinces/}">Provinces</a>
         </div>
-        <div class="tile" onclick="window.location.href='/cities'">
+        <div class="tile" onclick="window.location.href='/cities/'">
             <img th:src="@{/img/city.png}" alt="Cities" />
-            <a class="tile-link" th:href="@{/cities}">Cities</a>
+            <a class="tile-link" th:href="@{/cities/}">Cities</a>
         </div>
-        <div class="tile" onclick="window.location.href='/districts'">
+        <div class="tile" onclick="window.location.href='/districts/'">
             <img th:src="@{/img/district.png}" alt="Districts" />
-            <a class="tile-link" th:href="@{/districts}">Districts</a>
+            <a class="tile-link" th:href="@{/districts/}">Districts</a>
         </div>
-        <div class="tile" onclick="window.location.href='/addresses'">
+        <div class="tile" onclick="window.location.href='/addresses/'">
             <img th:src="@{/img/address.png}" alt="Addresses" />
-            <a class="tile-link" th:href="@{/addresses}">Addresses</a>
+            <a class="tile-link" th:href="@{/addresses/}">Addresses</a>
         </div>
-        <div class="tile" onclick="window.location.href='/telephoneExchanges'">
+        <div class="tile" onclick="window.location.href='/telephoneExchanges/'">
             <img th:src="@{/img/telephone-exchange.png}" alt="Telephone Exchanges" />
-            <a class="tile-link" th:href="@{/telephoneExchanges}">Telephone Exchanges</a>
+            <a class="tile-link" th:href="@{/telephoneExchanges/}">Telephone Exchanges</a>
         </div>
-        <div class="tile" onclick="window.location.href='/establishments'">
+        <div class="tile" onclick="window.location.href='/establishments/'">
             <img th:src="@{/img/establishment.png}" alt="Establishments" />
-            <a class="tile-link" th:href="@{/establishments}">Establishments</a>
+            <a class="tile-link" th:href="@{/establishments/}">Establishments</a>
         </div>
-        <div class="tile" onclick="window.location.href='/agencies'">
+        <div class="tile" onclick="window.location.href='/agencies/'">
             <img th:src="@{/img/agency.png}" alt="Agencies" />
-            <a class="tile-link" th:href="@{/agencies}">Agencies</a>
+            <a class="tile-link" th:href="@{/agencies/}">Agencies</a>
         </div>
-        <div class="tile" onclick="window.location.href='/phones'">
+        <div class="tile" onclick="window.location.href='/phones/'">
             <img th:src="@{/img/phone.png}" alt="Phones" />
-            <a class="tile-link" th:href="@{/phones}">Phones</a>
+            <a class="tile-link" th:href="@{/phones/}">Phones</a>
         </div>
-        <div class="tile" onclick="window.location.href='/phoneNumbers'">
+        <div class="tile" onclick="window.location.href='/phoneNumbers/'">
             <img th:src="@{/img/phone-number.png}" alt="Phone Numbers" />
-            <a class="tile-link" th:href="@{/phoneNumbers}">Phone Numbers</a>
+            <a class="tile-link" th:href="@{/phoneNumbers/}">Phone Numbers</a>
         </div>
-        <div class="tile" onclick="window.location.href='/connectedPhones'">
+        <div class="tile" onclick="window.location.href='/connectedPhones/'">
             <img th:src="@{/img/connected-phones.png}" alt="Connected Phones" />
-            <a class="tile-link" th:href="@{/connectedPhones}">Connected Phones</a>
+            <a class="tile-link" th:href="@{/connectedPhones/}">Connected Phones</a>
         </div>
-        <div class="tile" onclick="window.location.href='/callDetailRecords'">
+        <div class="tile" onclick="window.location.href='/callDetailRecords/'">
             <img th:src="@{/img/cdr.png}" alt="Call Detail Records" />
-            <a class="tile-link" th:href="@{/callDetailRecords}">Call Detail Records</a>
+            <a class="tile-link" th:href="@{/callDetailRecords/}">Call Detail Records</a>
         </div>
-        <div class="tile" onclick="window.location.href='/subscribers'">
+        <div class="tile" onclick="window.location.href='/subscribers/'">
             <img th:src="@{/img/subscribers.png}" alt="Subscribers" />
-            <a class="tile-link" th:href="@{/subscribers}">Subscribers</a>
+            <a class="tile-link" th:href="@{/subscribers/}">Subscribers</a>
         </div>
-        <div class="tile" onclick="window.location.href='/penalties'">
+        <div class="tile" onclick="window.location.href='/penalties/'">
             <img th:src="@{/img/penalty.png}" alt="Penalties" />
-            <a class="tile-link" th:href="@{/penalties}">Penalties</a>
+            <a class="tile-link" th:href="@{/penalties/}">Penalties</a>
         </div>
-        <div class="tile" onclick="window.location.href='/subscriptionFees'">
+        <div class="tile" onclick="window.location.href='/subscriptionFees/'">
             <img th:src="@{/img/fee.png}" alt="Subscription Fees" />
-            <a class="tile-link" th:href="@{/subscriptionFees}">Subscription Fees</a>
+            <a class="tile-link" th:href="@{/subscriptionFees/}">Subscription Fees</a>
         </div>
-        <div class="tile" onclick="window.location.href='/invoices'">
+        <div class="tile" onclick="window.location.href='/invoices/'">
             <img th:src="@{/img/invoice.png}" alt="Invoices" />
-            <a class="tile-link" th:href="@{/invoices}">Invoices</a>
+            <a class="tile-link" th:href="@{/invoices/}">Invoices</a>
         </div>
-        <div class="tile" onclick="window.location.href='/availablePhoneNumbers'">
+        <div class="tile" onclick="window.location.href='/availablePhoneNumbers/'">
             <img th:src="@{/img/available.png}" alt="Available Phone Numbers" />
-            <a class="tile-link" th:href="@{/availablePhoneNumbers}">Available Phone Numbers</a>
+            <a class="tile-link" th:href="@{/availablePhoneNumbers/}">Available Phone Numbers</a>
         </div>
-        <div class="tile" onclick="window.location.href='/installQueue'">
+        <div class="tile" onclick="window.location.href='/installQueue/'">
             <img th:src="@{/img/queue.png}" alt="Installation Queue" />
-            <a class="tile-link" th:href="@{/installQueue}">Installation Queue</a>
+            <a class="tile-link" th:href="@{/installQueue/}">Installation Queue</a>
         </div>
 
     </div>

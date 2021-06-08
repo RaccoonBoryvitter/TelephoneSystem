@@ -1,10 +1,12 @@
 package com.chnu.pavel.telephone.service.address.interfaces;
 
 import com.chnu.pavel.telephone.model.Address;
+import com.chnu.pavel.telephone.model.District;
 import com.chnu.pavel.telephone.service.GenericService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -17,5 +19,9 @@ import java.util.List;
 
 @Service
 public interface AddressService extends GenericService<Address> {
+    Optional<Address> findByDistrict(District district);
+    Optional<Address> findByStreet(String street);
+    Optional<Address> findByBuilding(String building);
+    Optional<Address> findByZipCode(String zipCode);
 
 }

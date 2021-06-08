@@ -10,7 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.stream.Collectors;
 
 /**
  * Created by IntelliJ IDEA.
@@ -28,10 +31,19 @@ public class ProvinceUiController {
 
     private final ProvinceService service;
 
-    @RequestMapping("")
+    private String error = "noerror";
+    private String successfull = "nosuccess";
+
+    @RequestMapping("/")
     public String findAll(Model model) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy, HH:mm:ss");
+        model.addAttribute("formatter", formatter);
         model.addAttribute("items", service.findAll());
         model.addAttribute("states", Arrays.asList(State.values()));
+        model.addAttribute("errMsg", error);
+        if(!error.equals("noerror")) error = "noerror";
+        model.addAttribute("successMsg", successfull);
+        if(!successfull.equals("nosuccess")) successfull = "nosuccess";
         return "province/provinces";
     }
 
@@ -44,29 +56,59 @@ public class ProvinceUiController {
     @GetMapping("/delete/{id}")
     public String deleteById( @PathVariable("id") String id) {
         service.deleteById(Long.valueOf(id));
-        return "redirect:/provinces";
+        successfull = "SUCCESS! Object with id " + id + " has been deleted!";
+        return "redirect:/provinces/";
     }
 
     @PostMapping("/create/")
-    public String createProvince(HttpServletRequest request) {
-        Province province = new Province();
-        province.setName(request.getParameter("create-name").trim());
-        province.setPhoneCode(request.getParameter("create-phone-code").trim());
-        province.setState(State.valueOf(request.getParameter("create-state")));
-        province.setDescription(request.getParameter("create-description"));
-        service.create(province);
-        return "redirect:/provinces";
+    public String createProvince(HttpServletRequest request) throws IOException {
+
+        String name = request.getParameter("create-name").trim();
+        String phoneCode = request.getParameter("create-phone-code").trim();
+        State state = State.valueOf(request.getParameter("create-state"));
+        String description = request.getParameter("create-description").trim();
+
+        if(service.findByName(name).isPresent() || service.findByPhoneCode(phoneCode).isPresent()) {
+            error = "ERROR! Object with such credentials exists!";
+        } else if (name.isEmpty() || phoneCode.isEmpty())
+            error = "ERROR! Empty values!";
+        else {
+            Province province = new Province();
+            province.setName(name);
+            province.setPhoneCode(phoneCode);
+            province.setState(state);
+            province.setDescription(description);
+            service.create(province);
+            successfull = "SUCCESS! Object with name " + name + " has been created!";
+        }
+
+        return "redirect:/provinces/";
     }
 
     @PostMapping("/update/{id}")
     public String update(HttpServletRequest request, @PathVariable("id") String id) {
-        Province province = new Province();
-        province.setName(request.getParameter("update-name").trim());
-        province.setPhoneCode(request.getParameter("update-phone-code").trim());
-        province.setState(State.valueOf(request.getParameter("update-state")));
-        province.setDescription(request.getParameter("update-description"));
-        service.updateById(Long.valueOf(id), province);
-        return "redirect:/provinces";
+
+        String name = request.getParameter("update-name").trim();
+        String phoneCode = request.getParameter("update-phone-code").trim();
+        State state = State.valueOf(request.getParameter("update-state"));
+        String description = request.getParameter("update-description").trim();
+
+        if((service.findByPhoneCode(phoneCode).isPresent()
+                && !service.findByPhoneCode(phoneCode).get().getName().equals(name))
+            || (service.findByName(name).isPresent()
+                && !service.findByName(name).get().getPhoneCode().equals(phoneCode))) {
+            error = "ERROR! Object with such credentials exists!";
+        } else {
+            Province province = new Province();
+            province.setName(name);
+            province.setPhoneCode(phoneCode);
+            province.setState(state);
+            province.setDescription(description);
+            service.updateById(Long.valueOf(id), province);
+            successfull = "SUCCESS! Object with id " + id + " has been updated!";
+        }
+
+        return "redirect:/provinces/";
     }
 
 }

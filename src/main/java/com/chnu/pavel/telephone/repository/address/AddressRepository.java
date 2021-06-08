@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -20,16 +21,9 @@ import java.util.List;
 @Repository
 public interface AddressRepository extends MongoRepository<Address, Long> {
 
-    @Query("{ 'district' : ?0 }")
-    List<Address> findByDistrict(District district);
-
-    @Query("{ 'street' : ?0 }")
-    List<Address> findByStreet(String street);
-
-    @Query("{ 'building' : ?0 }")
-    Address findByBuildingNo(String building);
-
-    @Query("{ 'zipCode' : ?0 }")
-    List<Address> findByZipCode(String zipCode);
+    Optional<Address> findByDistrict(District district);
+    Optional<Address> findByStreet(String street);
+    Optional<Address> findByBuilding(String building);
+    Optional<Address> findByZipCode(String zipCode);
 
 }

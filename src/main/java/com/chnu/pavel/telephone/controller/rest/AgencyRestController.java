@@ -23,12 +23,12 @@ public class AgencyRestController {
     
     private final AgencyService service;
 
-    @RequestMapping("/get/all/")
+    @GetMapping("/get/all")
     public List<Agency> findAll() {
         return service.findAll();
     }
 
-    @PostMapping("/create/")
+    @PostMapping("/create")
     public Agency create( @RequestBody Agency agency) {
         return service.create(agency);
     }
@@ -38,12 +38,12 @@ public class AgencyRestController {
         return service.findById(Long.valueOf(id));
     }
 
-    @PostMapping("/update/{id}")
+    @PutMapping("/update/{id}")
     public Agency updateById( @RequestBody Agency agency, @PathVariable("id") String id) {
         return service.updateById(Long.valueOf(id), agency);
     }
 
-    @GetMapping("delete/{id}")
+    @DeleteMapping("delete/{id}")
     public Agency deleteById(@PathVariable("id") String id) {
         return service.deleteById(Long.valueOf(id));
     }

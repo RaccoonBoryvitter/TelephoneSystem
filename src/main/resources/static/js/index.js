@@ -1,3 +1,12 @@
+$(".tile").on('click', function () {
+    $(".loader").css('display', 'flex');
+    $(".loader").fadeIn("slow");
+})
+
+$("a").on('click', function () {
+    $(".loader").css('display', 'flex');
+    $(".loader").fadeIn("slow");
+});
 
 particlesJS('particles',
 

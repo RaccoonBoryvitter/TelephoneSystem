@@ -3,11 +3,14 @@ package com.chnu.pavel.telephone.dao.connectedphone.impls;
 import com.chnu.pavel.telephone.dao.connectedphone.interfaces.ConnectedPhoneDAO;
 import com.chnu.pavel.telephone.model.City;
 import com.chnu.pavel.telephone.model.ConnectedPhone;
+import com.chnu.pavel.telephone.model.Phone;
+import com.chnu.pavel.telephone.model.PhoneNumber;
 import com.chnu.pavel.telephone.repository.connectedphone.ConnectedPhoneRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -55,5 +58,15 @@ public class ConnectedPhoneDAOImpl implements ConnectedPhoneDAO {
     @Override
     public List<ConnectedPhone> findAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public Optional<ConnectedPhone> findByPhone(Phone phone) {
+        return repository.findByPhone(phone);
+    }
+
+    @Override
+    public Optional<ConnectedPhone> findByPhoneNumber(PhoneNumber phoneNumber) {
+        return repository.findByPhoneNumber(phoneNumber);
     }
 }

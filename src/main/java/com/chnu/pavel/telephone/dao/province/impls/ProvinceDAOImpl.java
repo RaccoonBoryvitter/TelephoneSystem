@@ -2,12 +2,13 @@ package com.chnu.pavel.telephone.dao.province.impls;
 
 import com.chnu.pavel.telephone.dao.province.interfaces.ProvinceDAO;
 import com.chnu.pavel.telephone.model.Province;
+import com.chnu.pavel.telephone.model.State;
 import com.chnu.pavel.telephone.repository.province.ProvinceRepository;
 import lombok.AllArgsConstructor;
-import org.bson.types.ObjectId;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -56,5 +57,15 @@ public class ProvinceDAOImpl implements ProvinceDAO {
     @Override
     public List<Province> findAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public Optional<Province> findByName(String name) {
+        return repository.findByName(name);
+    }
+
+    @Override
+    public Optional<Province> findByPhoneCode(String phoneCode) {
+        return repository.findByPhoneCode(phoneCode);
     }
 }

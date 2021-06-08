@@ -2,7 +2,10 @@ package com.chnu.pavel.telephone.dao.establishment.interfaces;
 
 import com.chnu.pavel.telephone.dao.GenericDAO;
 import com.chnu.pavel.telephone.model.Establishment;
+import com.chnu.pavel.telephone.model.TelephoneExchange;
 import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -15,4 +18,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface EstablishmentDAO extends GenericDAO<Establishment> {
+    Optional<Establishment> findByName(String name);
+    Optional<Establishment> findByTelephoneExchange(TelephoneExchange telephoneExchange);
 }

@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -55,5 +56,15 @@ public class AvailablePhoneNumberDAOImpl implements AvailablePhoneNumberDAO {
     @Override
     public List<AvailablePhoneNumber> findAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public Optional<AvailablePhoneNumber> findByNumber(String number) {
+        return repository.findByNumber(number);
+    }
+
+    @Override
+    public Optional<AvailablePhoneNumber> findByTelephoneExchange(TelephoneExchange telephoneExchange) {
+        return repository.findByTelephoneExchange(telephoneExchange);
     }
 }

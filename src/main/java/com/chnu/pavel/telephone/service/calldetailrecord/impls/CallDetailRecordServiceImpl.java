@@ -2,8 +2,7 @@ package com.chnu.pavel.telephone.service.calldetailrecord.impls;
 
 import com.chnu.pavel.telephone.dao.calldetailrecord.interfaces.CallDetailRecordDAO;
 import com.chnu.pavel.telephone.helper.SequenceGeneratorService;
-import com.chnu.pavel.telephone.model.Agency;
-import com.chnu.pavel.telephone.model.CallDetailRecord;
+import com.chnu.pavel.telephone.model.*;
 import com.chnu.pavel.telephone.service.calldetailrecord.interfaces.CallDetailRecordService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -11,6 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 import java.time.Instant;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -59,5 +59,25 @@ public class CallDetailRecordServiceImpl implements CallDetailRecordService {
            .forEach(cdr -> dao.deleteById(cdr.getId()));
 
         return dao.findAll();
+    }
+
+    @Override
+    public Optional<CallDetailRecord> findByFrom(PhoneNumber from) {
+        return dao.findByFrom(from);
+    }
+
+    @Override
+    public Optional<CallDetailRecord> findByTo(PhoneNumber to) {
+        return dao.findByTo(to);
+    }
+
+    @Override
+    public Optional<CallDetailRecord> findByConversationType(ConversationType conversationType) {
+        return dao.findByConversationType(conversationType);
+    }
+
+    @Override
+    public Optional<CallDetailRecord> findByTelephoneExchange(TelephoneExchange telephoneExchange) {
+        return dao.findByTelephoneExchange(telephoneExchange);
     }
 }

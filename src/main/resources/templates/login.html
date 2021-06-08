@@ -4,12 +4,18 @@
     <meta charset="UTF-8" />
     <title>Hotline Inc. | Auth</title>
     <link rel="stylesheet" th:href="@{/css/login/styles.css}"/>
+    <link rel="stylesheet" th:href="@{/css/loader.css}">
     <link rel="icon" type="image/x-icon" sizes="64x64 32x32 24x24 16x16" th:href="@{/img/favicon.ico}">
     <script th:src="@{https://code.jquery.com/jquery-3.6.0.min.js}"
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
             crossorigin="anonymous"></script>
 </head>
 <body>
+
+
+    <div class="loader">
+        <img th:src="@{/img/loader.gif}" alt="Loading">
+    </div>
 
     <div class="container" id="container">
         <div class="form-container sign-up-container">
@@ -77,6 +83,11 @@
 
     <div th:if="${param.error}" class="alert danger-alert">
         <h3>ERROR! [[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</h3>
+        <a class="alert-close">&times;</a>
+    </div>
+
+    <div th:if="${param.out}" class="alert success-alert">
+        <h3>You're logged out.</h3>
         <a class="alert-close">&times;</a>
     </div>
 

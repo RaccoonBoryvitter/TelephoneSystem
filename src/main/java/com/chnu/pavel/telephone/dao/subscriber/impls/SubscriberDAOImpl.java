@@ -1,13 +1,13 @@
 package com.chnu.pavel.telephone.dao.subscriber.impls;
 
 import com.chnu.pavel.telephone.dao.subscriber.interfaces.SubscriberDAO;
-import com.chnu.pavel.telephone.model.InstallmentApplication;
-import com.chnu.pavel.telephone.model.Subscriber;
+import com.chnu.pavel.telephone.model.*;
 import com.chnu.pavel.telephone.repository.subscriber.SubscriberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -59,5 +59,15 @@ public class SubscriberDAOImpl implements SubscriberDAO {
     @Override
     public List<Subscriber> findAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public Optional<Subscriber> findByPrivilegeType(PrivilegeType privilegeType) {
+        return repository.findByPrivilegeType(privilegeType);
+    }
+
+    @Override
+    public Optional<Subscriber> findByConnectedPhone(ConnectedPhone connectedPhone) {
+        return repository.findByConnectedPhone(connectedPhone);
     }
 }

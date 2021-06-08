@@ -23,12 +23,12 @@ public class EstablishmentRestController {
     
     private final EstablishmentService service;
 
-    @RequestMapping("/get/all/")
+    @GetMapping("/get/all")
     public List<Establishment> findAll() {
         return service.findAll();
     }
 
-    @PostMapping("/create/")
+    @PostMapping("/create")
     public Establishment create( @RequestBody Establishment establishment) {
         return service.create(establishment);
     }
@@ -38,12 +38,12 @@ public class EstablishmentRestController {
         return service.findById(Long.valueOf(id));
     }
 
-    @PostMapping("/update/{id}")
+    @PutMapping("/update/{id}")
     public Establishment updateById( @RequestBody Establishment establishment, @PathVariable("id") String id) {
         return service.updateById(Long.valueOf(id), establishment);
     }
 
-    @GetMapping("delete/{id}")
+    @DeleteMapping("delete/{id}")
     public Establishment deleteById(@PathVariable("id") String id) {
         return service.deleteById(Long.valueOf(id));
     }

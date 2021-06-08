@@ -2,7 +2,10 @@ package com.chnu.pavel.telephone.dao.phone.interfaces;
 
 import com.chnu.pavel.telephone.dao.GenericDAO;
 import com.chnu.pavel.telephone.model.Phone;
+import com.chnu.pavel.telephone.model.PhoneType;
 import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -15,4 +18,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PhoneDAO extends GenericDAO<Phone> {
+    Optional<Phone> findByName(String name);
+    Optional<Phone> findBPhoneType(PhoneType phoneType);
 }

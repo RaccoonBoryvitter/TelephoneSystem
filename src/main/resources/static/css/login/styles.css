@@ -423,6 +423,16 @@ input:focus {
     color: #8f130c;
 }
 
+.success-alert {
+    background-color: #a8f0c6;
+    border-left: 5px solid #178344;
+}
+.success-alert .alert-close {
+    border-color: #178344;
+    color: #178344;
+}
+
+
 @keyframes sliding-out {
 
     0% {

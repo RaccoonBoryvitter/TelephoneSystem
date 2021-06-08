@@ -23,12 +23,12 @@ public class ConnectedPhoneRestController {
     
     private final ConnectedPhoneService service;
 
-    @RequestMapping("/get/all/")
+    @GetMapping("/get/all")
     public List<ConnectedPhone> findAll() {
         return service.findAll();
     }
 
-    @PostMapping("/create/")
+    @PostMapping("/create")
     public ConnectedPhone create( @RequestBody ConnectedPhone connectedPhone) {
         return service.create(connectedPhone);
     }
@@ -38,12 +38,12 @@ public class ConnectedPhoneRestController {
         return service.findById(Long.valueOf(id));
     }
 
-    @PostMapping("/update/{id}")
+    @PutMapping("/update/{id}")
     public ConnectedPhone updateById( @RequestBody ConnectedPhone connectedPhone, @PathVariable("id") String id) {
         return service.updateById(Long.valueOf(id), connectedPhone);
     }
 
-    @GetMapping("delete/{id}")
+    @DeleteMapping("delete/{id}")
     public ConnectedPhone deleteById(@PathVariable("id") String id) {
         return service.deleteById(Long.valueOf(id));
     }

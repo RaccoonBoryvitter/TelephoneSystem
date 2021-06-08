@@ -3,11 +3,13 @@ package com.chnu.pavel.telephone.dao.establishment.impls;
 import com.chnu.pavel.telephone.dao.establishment.interfaces.EstablishmentDAO;
 import com.chnu.pavel.telephone.model.ConnectedPhone;
 import com.chnu.pavel.telephone.model.Establishment;
+import com.chnu.pavel.telephone.model.TelephoneExchange;
 import com.chnu.pavel.telephone.repository.establishment.EstablishmentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -55,5 +57,15 @@ public class EstablishmentDAOImpl implements EstablishmentDAO {
     @Override
     public List<Establishment> findAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public Optional<Establishment> findByName(String name) {
+        return repository.findByName(name);
+    }
+
+    @Override
+    public Optional<Establishment> findByTelephoneExchange(TelephoneExchange telephoneExchange) {
+        return repository.findByTelephoneExchange(telephoneExchange);
     }
 }

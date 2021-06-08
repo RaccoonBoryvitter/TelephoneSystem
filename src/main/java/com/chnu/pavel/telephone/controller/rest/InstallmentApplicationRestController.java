@@ -23,12 +23,12 @@ public class InstallmentApplicationRestController {
     
     private final InstallmentApplicationService service;
 
-    @RequestMapping("/get/all/")
+    @GetMapping("/get/all")
     public List<InstallmentApplication> findAll() {
         return service.findAll();
     }
 
-    @PostMapping("/create/")
+    @PostMapping("/create")
     public InstallmentApplication create( @RequestBody InstallmentApplication installmentApplication) {
         return service.create(installmentApplication);
     }
@@ -38,12 +38,12 @@ public class InstallmentApplicationRestController {
         return service.findById(Long.valueOf(id));
     }
 
-    @PostMapping("/update/{id}")
+    @PutMapping("/update/{id}")
     public InstallmentApplication updateById( @RequestBody InstallmentApplication installmentApplication, @PathVariable("id") String id) {
         return service.updateById(Long.valueOf(id), installmentApplication);
     }
 
-    @GetMapping("delete/{id}")
+    @DeleteMapping("delete/{id}")
     public InstallmentApplication deleteById(@PathVariable("id") String id) {
         return service.deleteById(Long.valueOf(id));
     }

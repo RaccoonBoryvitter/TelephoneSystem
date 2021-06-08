@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -62,4 +63,23 @@ public class AddressDAOImpl implements AddressDAO {
         return addressRepository.findAll();
     }
 
+    @Override
+    public Optional<Address> findByDistrict(District district) {
+        return addressRepository.findByDistrict(district);
+    }
+
+    @Override
+    public Optional<Address> findByStreet(String street) {
+        return addressRepository.findByStreet(street);
+    }
+
+    @Override
+    public Optional<Address> findByBuilding(String building) {
+        return addressRepository.findByBuilding(building);
+    }
+
+    @Override
+    public Optional<Address> findByZipCode(String zipCode) {
+        return addressRepository.findByZipCode(zipCode);
+    }
 }

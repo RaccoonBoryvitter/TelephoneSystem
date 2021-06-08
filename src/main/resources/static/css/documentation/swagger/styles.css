@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+}
+
+.navBar {
+    position: sticky;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.loader {
+    z-index: 1000;
+}
+
+iframe {
+    width: 100%;
+    height: 89%;
+    position: absolute;
+}

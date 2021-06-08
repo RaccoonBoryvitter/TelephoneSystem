@@ -6,6 +6,7 @@ import com.chnu.pavel.telephone.model.District;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -18,5 +19,10 @@ import java.util.List;
 
 @Repository
 public interface AddressDAO extends GenericDAO<Address> {
+
+    Optional<Address> findByDistrict(District district);
+    Optional<Address> findByStreet(String street);
+    Optional<Address> findByBuilding(String building);
+    Optional<Address> findByZipCode(String zipCode);
 
 }

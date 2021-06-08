@@ -23,12 +23,12 @@ public class AddressRestController {
     
     private final AddressService service;
 
-    @RequestMapping("/get/all/")
+    @GetMapping(value = "/get/all")
     public List<Address> findAll() {
         return service.findAll();
     }
 
-    @PostMapping("/create/")
+    @PostMapping("/create")
     public Address create( @RequestBody Address address) {
         return service.create(address);
     }
@@ -38,12 +38,12 @@ public class AddressRestController {
         return service.findById(Long.valueOf(id));
     }
 
-    @PostMapping("/update/{id}")
+    @PutMapping("/update/{id}")
     public Address updateById( @RequestBody Address address, @PathVariable("id") String id) {
         return service.updateById(Long.valueOf(id), address);
     }
 
-    @GetMapping("delete/{id}")
+    @DeleteMapping("delete/{id}")
     public Address deleteById(@PathVariable("id") String id) {
         return service.deleteById(Long.valueOf(id));
     }

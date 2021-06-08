@@ -2,6 +2,7 @@ package com.chnu.pavel.telephone.service.district.impls;
 
 import com.chnu.pavel.telephone.dao.district.interfaces.DistrictDAO;
 import com.chnu.pavel.telephone.helper.SequenceGeneratorService;
+import com.chnu.pavel.telephone.model.City;
 import com.chnu.pavel.telephone.model.District;
 import com.chnu.pavel.telephone.service.district.interfaces.DistrictService;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 import java.time.Instant;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -58,5 +60,15 @@ public class DistrictServiceImpl implements DistrictService {
                 .forEach(d -> dao.deleteById(d.getId()));
 
         return dao.findAll();
+    }
+
+    @Override
+    public Optional<District> findByName(String name) {
+        return dao.findByName(name);
+    }
+
+    @Override
+    public Optional<District> findByCity(City city) {
+        return dao.findByCity(city);
     }
 }

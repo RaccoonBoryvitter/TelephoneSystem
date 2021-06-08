@@ -2,9 +2,10 @@ package com.chnu.pavel.telephone.dao.province.interfaces;
 
 import com.chnu.pavel.telephone.dao.GenericDAO;
 import com.chnu.pavel.telephone.model.Province;
+import com.chnu.pavel.telephone.model.State;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -17,5 +18,8 @@ import java.util.List;
 
 @Repository
 public interface ProvinceDAO extends GenericDAO<Province> {
+
+    Optional<Province> findByName(String name);
+    Optional<Province> findByPhoneCode(String phoneCode);
 
 }

@@ -1,14 +1,13 @@
 package com.chnu.pavel.telephone.dao.installmentapplication.impls;
 
 import com.chnu.pavel.telephone.dao.installmentapplication.interfaces.InstallmentApplicationDAO;
-import com.chnu.pavel.telephone.model.Establishment;
-import com.chnu.pavel.telephone.model.InstallmentApplication;
-import com.chnu.pavel.telephone.model.Phone;
+import com.chnu.pavel.telephone.model.*;
 import com.chnu.pavel.telephone.repository.installmentapplication.InstallmentApplicationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -64,5 +63,15 @@ public class InstallmentApplicationDAOImpl implements InstallmentApplicationDAO 
     @Override
     public List<InstallmentApplication> findAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public Optional<InstallmentApplication> findByQueueType(QueueType queueType) {
+        return repository.findByQueueType(queueType);
+    }
+
+    @Override
+    public Optional<InstallmentApplication> findByAvailablePhoneNumber(AvailablePhoneNumber availablePhoneNumber) {
+        return repository.findByAvailableNumber(availablePhoneNumber);
     }
 }

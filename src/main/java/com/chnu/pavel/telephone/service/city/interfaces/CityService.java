@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -21,5 +22,7 @@ import java.util.List;
 @Service
 public interface CityService extends GenericService<City> {
 
+    Optional<City> findByName(String name);
+    Optional<City> findByPhoneCode(String phoneCode);
 
 }

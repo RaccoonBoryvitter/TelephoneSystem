@@ -4,6 +4,7 @@ import com.chnu.pavel.telephone.dao.availablephonenumber.interfaces.AvailablePho
 import com.chnu.pavel.telephone.helper.SequenceGeneratorService;
 import com.chnu.pavel.telephone.model.Agency;
 import com.chnu.pavel.telephone.model.AvailablePhoneNumber;
+import com.chnu.pavel.telephone.model.TelephoneExchange;
 import com.chnu.pavel.telephone.service.availablephonenumber.interfaces.AvailablePhoneNumberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 import java.time.Instant;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -56,5 +58,15 @@ public class AvailablePhoneNumberServiceImpl implements AvailablePhoneNumberServ
     @Override
     public List<AvailablePhoneNumber> findAll() {
         return dao.findAll();
+    }
+
+    @Override
+    public Optional<AvailablePhoneNumber> findByNumber(String number) {
+        return dao.findByNumber(number);
+    }
+
+    @Override
+    public Optional<AvailablePhoneNumber> findByTelephoneExchange(TelephoneExchange telephoneExchange) {
+        return dao.findByTelephoneExchange(telephoneExchange);
     }
 }

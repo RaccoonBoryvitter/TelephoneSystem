@@ -84,8 +84,19 @@ pwdSignup.addEventListener('blur', () => {
     if(pwdToolTip.classList.contains("show")) pwdToolTip.classList.remove("show");
 });
 
-singInBtn.addEventListener('click', () => {
-    window.localStorage.setItem("hello", "world");
+// singInBtn.addEventListener('submit', () => {
+//     ;
+// })
+
+$(".alert-close").click(function() {
+    $(this)
+        .parent(".alert")
+        .fadeOut();
+});
+
+$("form").on('submit', function () {
+    $(".loader").css('display', 'flex');
+    $(".loader").fadeIn();
 })
 
 function validateUsername(usernameString) {
@@ -204,13 +215,6 @@ function enableSignUp(usr, email, pwd) {
     console.log((usr && email) && pwd);
     signUpBtn.disabled = !((usr && email) && pwd);
 }
-
-$(".alert-close").click(function() {
-    $(this)
-        .parent(".alert")
-        .fadeOut();
-});
-
 
 particlesJS('particles',
 

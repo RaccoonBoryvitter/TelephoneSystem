@@ -24,12 +24,12 @@ public class DistrictRestController {
 
     private final DistrictService service;
 
-    @RequestMapping("/get/all/")
+    @GetMapping("/get/all")
     public List<District> findAll() {
         return service.findAll();
     }
 
-    @PostMapping("/create/")
+    @PostMapping("/create")
     public District create( @RequestBody District district) {
         return service.create(district);
     }
@@ -39,12 +39,12 @@ public class DistrictRestController {
         return service.findById(Long.valueOf(id));
     }
 
-    @PostMapping("/update/{id}")
+    @PutMapping("/update/{id}")
     public District updateById( @RequestBody District district, @PathVariable("id") String id) {
         return service.updateById(Long.valueOf(id), district);
     }
 
-    @GetMapping("delete/{id}")
+    @DeleteMapping("delete/{id}")
     public District deleteById(@PathVariable("id") String id) {
         return service.deleteById(Long.valueOf(id));
     }

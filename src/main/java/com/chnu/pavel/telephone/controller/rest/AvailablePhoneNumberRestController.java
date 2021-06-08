@@ -23,12 +23,12 @@ public class AvailablePhoneNumberRestController {
 
     private final AvailablePhoneNumberService service;
 
-    @RequestMapping("/get/all/")
+    @GetMapping("/get/all")
     public List<AvailablePhoneNumber> findAll() {
         return service.findAll();
     }
 
-    @PostMapping("/create/")
+    @PostMapping("/create")
     public AvailablePhoneNumber create( @RequestBody AvailablePhoneNumber availablePhoneNumber) {
         return service.create(availablePhoneNumber);
     }
@@ -38,12 +38,12 @@ public class AvailablePhoneNumberRestController {
         return service.findById(Long.valueOf(id));
     }
 
-    @PostMapping("/update/{id}")
+    @PutMapping("/update/{id}")
     public AvailablePhoneNumber updateById( @RequestBody AvailablePhoneNumber availablePhoneNumber, @PathVariable("id") String id) {
         return service.updateById(Long.valueOf(id), availablePhoneNumber);
     }
 
-    @GetMapping("delete/{id}")
+    @DeleteMapping("delete/{id}")
     public AvailablePhoneNumber deleteById(@PathVariable("id") String id) {
         return service.deleteById(Long.valueOf(id));
     }

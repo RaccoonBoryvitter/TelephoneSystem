@@ -28,7 +28,7 @@ public class ProvinceRestController {
 
     private final ProvinceService service;
 
-    @RequestMapping("/get/all/")
+    @GetMapping("/get/all")
     public List<Province> findAll() {
         return service.findAll();
     }
@@ -43,12 +43,12 @@ public class ProvinceRestController {
         return "Object " + service.deleteById(Long.valueOf(id)).toString() + " was succesfully deleted";
     }
 
-    @PostMapping("/create/")
+    @PutMapping("/create")
     public Province create(@RequestBody Province province) {
         return service.create(province);
     }
 
-    @PostMapping("/update/{id}")
+    @DeleteMapping("/update/{id}")
     public Province update(@RequestBody Province province, @PathVariable("id") String id) {
         return service.updateById(Long.valueOf(id), province);
     }

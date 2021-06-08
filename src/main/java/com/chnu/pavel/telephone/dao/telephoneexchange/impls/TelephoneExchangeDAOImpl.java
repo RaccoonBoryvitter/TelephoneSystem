@@ -1,7 +1,9 @@
 package com.chnu.pavel.telephone.dao.telephoneexchange.impls;
 
 import com.chnu.pavel.telephone.dao.telephoneexchange.interfaces.TelephoneExchangeDAO;
+import com.chnu.pavel.telephone.model.Address;
 import com.chnu.pavel.telephone.model.District;
+import com.chnu.pavel.telephone.model.StationType;
 import com.chnu.pavel.telephone.model.TelephoneExchange;
 import com.chnu.pavel.telephone.repository.telephoneexchange.TelephoneExchangeRepository;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -61,4 +64,25 @@ public class TelephoneExchangeDAOImpl implements TelephoneExchangeDAO {
     public List<TelephoneExchange> findAll() {
         return repository.findAll();
     }
+
+    @Override
+    public Optional<TelephoneExchange> findByCodeName(String codeName) {
+        return repository.findByCodeName(codeName);
+    }
+
+    @Override
+    public Optional<TelephoneExchange> findByAddress(Address address) {
+        return repository.findByAddress(address);
+    }
+
+    @Override
+    public Optional<TelephoneExchange> findByStationType(StationType stationType) {
+        return repository.findByStationType(stationType);
+    }
+
+    @Override
+    public Optional<TelephoneExchange> findByWorkingStatus(boolean workingStatus) {
+        return repository.findByWorkingStatus(workingStatus);
+    }
 }
+

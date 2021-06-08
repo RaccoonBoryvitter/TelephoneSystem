@@ -1,7 +1,9 @@
 package com.chnu.pavel.telephone.repository.connectedphone;
 
-import com.chnu.pavel.telephone.model.ConnectedPhone;
+import com.chnu.pavel.telephone.model.*;
 import org.springframework.data.mongodb.repository.MongoRepository;
+
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -13,4 +15,8 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  */
 
 public interface ConnectedPhoneRepository extends MongoRepository<ConnectedPhone, Long> {
+
+    Optional<ConnectedPhone> findByPhone(Phone phone);
+    Optional<ConnectedPhone> findByPhoneNumber(PhoneNumber phoneNumber);
+
 }

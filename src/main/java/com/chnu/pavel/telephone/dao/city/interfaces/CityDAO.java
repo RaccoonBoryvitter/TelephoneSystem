@@ -5,6 +5,7 @@ import com.chnu.pavel.telephone.model.City;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -17,5 +18,8 @@ import java.util.List;
 
 @Repository
 public interface CityDAO extends GenericDAO<City> {
+
+    Optional<City> findByName(String name);
+    Optional<City> findByPhoneCode(String phoneCode);
 
 }

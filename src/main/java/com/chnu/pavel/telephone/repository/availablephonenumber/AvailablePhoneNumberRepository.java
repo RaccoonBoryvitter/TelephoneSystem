@@ -1,7 +1,10 @@
 package com.chnu.pavel.telephone.repository.availablephonenumber;
 
 import com.chnu.pavel.telephone.model.AvailablePhoneNumber;
+import com.chnu.pavel.telephone.model.TelephoneExchange;
 import org.springframework.data.mongodb.repository.MongoRepository;
+
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -13,4 +16,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  */
 
 public interface AvailablePhoneNumberRepository extends MongoRepository<AvailablePhoneNumber, Long> {
+
+    Optional<AvailablePhoneNumber> findByNumber(String number);
+    Optional<AvailablePhoneNumber> findByTelephoneExchange(TelephoneExchange telephoneExchange);
 }

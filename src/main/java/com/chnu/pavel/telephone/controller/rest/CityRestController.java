@@ -23,12 +23,12 @@ public class CityRestController {
 
     private final CityService service;
 
-    @RequestMapping("/get/all/")
+    @GetMapping("/get/all")
     public List<City> getCities() {
         return service.findAll();
     }
 
-    @PostMapping("/create/")
+    @PostMapping("/create")
     public City create( @RequestBody City city) {
         return service.create(city);
     }
@@ -38,12 +38,12 @@ public class CityRestController {
         return service.findById(Long.valueOf(id));
     }
 
-    @PostMapping("/update/{id}")
+    @PutMapping("/update/{id}")
     public City updateById( @RequestBody City city, @PathVariable("id") String id) {
         return service.updateById(Long.valueOf(id), city);
     }
 
-    @GetMapping("delete/{id}")
+    @DeleteMapping("delete/{id}")
     public City deleteById(@PathVariable("id") String id) {
         return service.deleteById(Long.valueOf(id));
     }

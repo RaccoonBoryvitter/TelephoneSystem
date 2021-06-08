@@ -20,9 +20,17 @@ public class AuthController {
         return "login";
     }
 
-    @RequestMapping("/")
-    public String showHomePage() {
+    @RequestMapping("/logout")
+    public String logout() {
+        return "redirect:/login?out";
+    }
+
+    @RequestMapping("/dashboard")
+    public String showDashboard() {
         return "index";
     }
+
+    @RequestMapping("/")
+    public String redirect() { return "redirect:/dashboard"; }
 
 }

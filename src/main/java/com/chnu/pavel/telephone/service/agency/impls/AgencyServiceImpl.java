@@ -3,6 +3,7 @@ package com.chnu.pavel.telephone.service.agency.impls;
 import com.chnu.pavel.telephone.dao.agency.interfaces.AgencyDAO;
 import com.chnu.pavel.telephone.helper.SequenceGeneratorService;
 import com.chnu.pavel.telephone.model.Agency;
+import com.chnu.pavel.telephone.model.TelephoneExchange;
 import com.chnu.pavel.telephone.service.agency.interfaces.AgencyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 import java.time.Instant;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -58,5 +60,15 @@ public class AgencyServiceImpl implements AgencyService {
            .forEach(a -> dao.deleteById(a.getId()));
 
         return dao.findAll();
+    }
+
+    @Override
+    public Optional<Agency> findByName(String name) {
+        return dao.findByName(name);
+    }
+
+    @Override
+    public Optional<Agency> findByTelephoneExchange(TelephoneExchange telephoneExchange) {
+        return dao.findByTelephoneExchange(telephoneExchange);
     }
 }

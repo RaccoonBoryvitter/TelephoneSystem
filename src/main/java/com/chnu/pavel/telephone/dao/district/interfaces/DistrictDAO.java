@@ -1,8 +1,11 @@
 package com.chnu.pavel.telephone.dao.district.interfaces;
 
 import com.chnu.pavel.telephone.dao.GenericDAO;
+import com.chnu.pavel.telephone.model.City;
 import com.chnu.pavel.telephone.model.District;
 import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -15,4 +18,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DistrictDAO extends GenericDAO<District> {
+
+    Optional<District> findByName(String name);
+    Optional<District> findByCity(City city);
+
 }

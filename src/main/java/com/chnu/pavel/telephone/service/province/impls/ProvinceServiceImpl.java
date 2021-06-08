@@ -5,12 +5,12 @@ import com.chnu.pavel.telephone.helper.SequenceGeneratorService;
 import com.chnu.pavel.telephone.model.Province;
 import com.chnu.pavel.telephone.service.province.interfaces.ProvinceService;
 import lombok.RequiredArgsConstructor;
-import org.bson.types.ObjectId;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.time.Instant;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -55,6 +55,16 @@ public class ProvinceServiceImpl implements ProvinceService {
     @Override
     public Province deleteById(Long id) {
         return dao.deleteById(id);
+    }
+
+    @Override
+    public Optional<Province> findByName(String name) {
+        return dao.findByName(name);
+    }
+
+    @Override
+    public Optional<Province> findByPhoneCode(String phoneCode) {
+        return dao.findByPhoneCode(phoneCode);
     }
 
 }

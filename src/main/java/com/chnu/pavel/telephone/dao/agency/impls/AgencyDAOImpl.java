@@ -3,6 +3,7 @@ package com.chnu.pavel.telephone.dao.agency.impls;
 import com.chnu.pavel.telephone.dao.agency.interfaces.AgencyDAO;
 import com.chnu.pavel.telephone.model.Agency;
 import com.chnu.pavel.telephone.model.Province;
+import com.chnu.pavel.telephone.model.TelephoneExchange;
 import com.chnu.pavel.telephone.repository.agency.AgencyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import java.time.Instant;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -59,5 +61,15 @@ public class AgencyDAOImpl implements AgencyDAO {
     @Override
     public List<Agency> findAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public Optional<Agency> findByName(String name) {
+        return repository.findByName(name);
+    }
+
+    @Override
+    public Optional<Agency> findByTelephoneExchange(TelephoneExchange telephoneExchange) {
+        return repository.findByTelephoneExchange(telephoneExchange);
     }
 }

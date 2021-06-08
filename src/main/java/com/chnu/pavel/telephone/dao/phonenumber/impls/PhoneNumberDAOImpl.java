@@ -1,13 +1,16 @@
 package com.chnu.pavel.telephone.dao.phonenumber.impls;
 
 import com.chnu.pavel.telephone.dao.phonenumber.interfaces.PhoneNumberDAO;
+import com.chnu.pavel.telephone.model.Address;
 import com.chnu.pavel.telephone.model.Establishment;
 import com.chnu.pavel.telephone.model.PhoneNumber;
+import com.chnu.pavel.telephone.model.TelephoneExchange;
 import com.chnu.pavel.telephone.repository.phonenumber.PhoneNumberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -56,5 +59,20 @@ public class PhoneNumberDAOImpl implements PhoneNumberDAO {
     @Override
     public List<PhoneNumber> findAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public Optional<PhoneNumber> findByNumber(String number) {
+        return repository.findByNumber(number);
+    }
+
+    @Override
+    public Optional<PhoneNumber> findByTelephoneExchange(TelephoneExchange telephoneExchange) {
+        return repository.findByTelephoneExchange(telephoneExchange);
+    }
+
+    @Override
+    public Optional<PhoneNumber> findByAddress(Address address) {
+        return findByAddress(address);
     }
 }

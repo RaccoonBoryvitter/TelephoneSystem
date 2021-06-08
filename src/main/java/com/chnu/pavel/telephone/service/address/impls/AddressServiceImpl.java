@@ -3,6 +3,7 @@ package com.chnu.pavel.telephone.service.address.impls;
 import com.chnu.pavel.telephone.dao.address.interfaces.AddressDAO;
 import com.chnu.pavel.telephone.helper.SequenceGeneratorService;
 import com.chnu.pavel.telephone.model.Address;
+import com.chnu.pavel.telephone.model.District;
 import com.chnu.pavel.telephone.model.Province;
 import com.chnu.pavel.telephone.service.address.interfaces.AddressService;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 import java.time.Instant;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -59,5 +61,25 @@ public class AddressServiceImpl implements AddressService {
                             .forEach(a -> addressDAO.deleteById(a.getId()));
 
         return addressDAO.findAll();
+    }
+
+    @Override
+    public Optional<Address> findByDistrict(District district) {
+        return addressDAO.findByDistrict(district);
+    }
+
+    @Override
+    public Optional<Address> findByStreet(String street) {
+        return addressDAO.findByStreet(street);
+    }
+
+    @Override
+    public Optional<Address> findByBuilding(String building) {
+        return addressDAO.findByBuilding(building);
+    }
+
+    @Override
+    public Optional<Address> findByZipCode(String zipCode) {
+        return addressDAO.findByZipCode(zipCode);
     }
 }

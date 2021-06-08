@@ -23,12 +23,12 @@ public class TelephoneExchangeRestController {
     
     private final TelephoneExchangeService service;
 
-    @RequestMapping("/get/all/")
+    @GetMapping("/get/all")
     public List<TelephoneExchange> findAll() {
         return service.findAll();
     }
 
-    @PostMapping("/create/")
+    @PostMapping("/create")
     public TelephoneExchange create( @RequestBody TelephoneExchange telephoneExchange) {
         return service.create(telephoneExchange);
     }
@@ -38,12 +38,12 @@ public class TelephoneExchangeRestController {
         return service.findById(Long.valueOf(id));
     }
 
-    @PostMapping("/update/{id}")
+    @PutMapping("/update/{id}")
     public TelephoneExchange updateById( @RequestBody TelephoneExchange telephoneExchange, @PathVariable("id") String id) {
         return service.updateById(Long.valueOf(id), telephoneExchange);
     }
 
-    @GetMapping("delete/{id}")
+    @DeleteMapping("delete/{id}")
     public TelephoneExchange deleteById(@PathVariable("id") String id) {
         return service.deleteById(Long.valueOf(id));
     }

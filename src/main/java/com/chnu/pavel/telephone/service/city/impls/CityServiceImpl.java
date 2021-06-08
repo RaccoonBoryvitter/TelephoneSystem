@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.time.Instant;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -64,4 +65,13 @@ public class CityServiceImpl implements CityService {
         return dao.deleteById(id);
     }
 
+    @Override
+    public Optional<City> findByName(String name) {
+        return dao.findByName(name);
+    }
+
+    @Override
+    public Optional<City> findByPhoneCode(String phoneCode) {
+        return dao.findByPhoneCode(phoneCode);
+    }
 }

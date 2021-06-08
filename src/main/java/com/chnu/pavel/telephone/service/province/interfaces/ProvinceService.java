@@ -1,12 +1,10 @@
 package com.chnu.pavel.telephone.service.province.interfaces;
 
-import com.chnu.pavel.telephone.dao.province.interfaces.ProvinceDAO;
 import com.chnu.pavel.telephone.model.Province;
 import com.chnu.pavel.telephone.service.GenericService;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -19,5 +17,8 @@ import java.util.List;
 
 @Service
 public interface ProvinceService extends GenericService<Province> {
+
+    Optional<Province> findByName(String name);
+    Optional<Province> findByPhoneCode(String phoneCode);
 
 }

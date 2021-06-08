@@ -155,11 +155,13 @@ thead tr {
 table th, table td {
     padding: 12px 15px;
     text-align: center;
+    cursor: pointer;
 }
 
 th {
     font-size: 24px;
     padding: 18px 24px;
+    cursor: pointer;
 }
 
 table tbody tr {
@@ -221,4 +223,70 @@ table i.fa-trash-alt:hover {
 
 .undone {
     color: #ff3025;
+}
+
+
+.alert{
+    width:30%;
+    padding:15px;
+    position:absolute;
+    bottom: 2%;
+    z-index: 10;
+    border-radius:5px;
+    animation-name: sliding-out;
+    animation-duration: 1.0s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-play-state: running;
+    animation-fill-mode: forwards;
+
+}
+.alert-close{
+    position:absolute;
+    width:30px;
+    height:30px;
+    opacity:0.5;
+    border-width:1px;
+    border-style:solid;
+    border-radius:50%;
+    right:15px;
+    top:15px;
+    text-align:center;
+    font-size:1.1em;
+    cursor:pointer;
+    z-index: 20;
+}
+
+.danger-alert {
+    background-color: #f7a7a3;
+    border-left: 5px solid #8f130c;
+}
+.danger-alert .alert-close {
+    border-color: #8f130c;
+    color: #8f130c;
+}
+
+.success-alert {
+    background-color: #a8f0c6;
+    border-left: 5px solid #178344;
+}
+.success-alert .alert-close {
+    border-color: #178344;
+    color: #178344;
+}
+
+@keyframes sliding-out {
+
+    0% {
+        right: -5%;
+        opacity: 0;
+    }
+
+    100% {
+        right: 5%;
+        opacity: 1;
+        position: fixed;
+    }
+
 }

@@ -1,8 +1,11 @@
 package com.chnu.pavel.telephone.service.availablephonenumber.interfaces;
 
 import com.chnu.pavel.telephone.model.AvailablePhoneNumber;
+import com.chnu.pavel.telephone.model.TelephoneExchange;
 import com.chnu.pavel.telephone.service.GenericService;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -15,4 +18,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface AvailablePhoneNumberService extends GenericService<AvailablePhoneNumber> {
+    Optional<AvailablePhoneNumber> findByNumber(String number);
+    Optional<AvailablePhoneNumber> findByTelephoneExchange(TelephoneExchange telephoneExchange);
 }

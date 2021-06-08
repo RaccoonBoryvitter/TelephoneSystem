@@ -1,8 +1,12 @@
 package com.chnu.pavel.telephone.dao.telephoneexchange.interfaces;
 
 import com.chnu.pavel.telephone.dao.GenericDAO;
+import com.chnu.pavel.telephone.model.Address;
+import com.chnu.pavel.telephone.model.StationType;
 import com.chnu.pavel.telephone.model.TelephoneExchange;
 import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -15,4 +19,10 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TelephoneExchangeDAO extends GenericDAO<TelephoneExchange> {
+
+    Optional<TelephoneExchange> findByCodeName(String codeName);
+    Optional<TelephoneExchange> findByAddress(Address address);
+    Optional<TelephoneExchange> findByStationType(StationType stationType);
+    Optional<TelephoneExchange> findByWorkingStatus(boolean workingStatus);
+
 }

@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -56,5 +57,15 @@ public class CityDAOImpl implements CityDAO {
     @Override
     public List<City> findAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public Optional<City> findByName(String name) {
+        return repository.findByName(name);
+    }
+
+    @Override
+    public Optional<City> findByPhoneCode(String phoneCode) {
+        return repository.findByPhoneCode(phoneCode);
     }
 }

@@ -23,12 +23,12 @@ public class InvoiceRestController {
     
     private final InvoiceService service;
 
-    @RequestMapping("/get/all/")
+    @GetMapping("/get/all")
     public List<Invoice> findAll() {
         return service.findAll();
     }
 
-    @PostMapping("/create/")
+    @PostMapping("/create")
     public Invoice create( @RequestBody Invoice invoice) {
         return service.create(invoice);
     }
@@ -38,12 +38,12 @@ public class InvoiceRestController {
         return service.findById(Long.valueOf(id));
     }
 
-    @PostMapping("/update/{id}")
+    @PutMapping("/update/{id}")
     public Invoice updateById( @RequestBody Invoice invoice, @PathVariable("id") String id) {
         return service.updateById(Long.valueOf(id), invoice);
     }
 
-    @GetMapping("delete/{id}")
+    @DeleteMapping("delete/{id}")
     public Invoice deleteById(@PathVariable("id") String id) {
         return service.deleteById(Long.valueOf(id));
     }

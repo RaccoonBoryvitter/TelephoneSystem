@@ -1,13 +1,13 @@
 package com.chnu.pavel.telephone.dao.calldetailrecord.impls;
 
 import com.chnu.pavel.telephone.dao.calldetailrecord.interfaces.CallDetailRecordDAO;
-import com.chnu.pavel.telephone.model.AvailablePhoneNumber;
-import com.chnu.pavel.telephone.model.CallDetailRecord;
+import com.chnu.pavel.telephone.model.*;
 import com.chnu.pavel.telephone.repository.calldetailrecord.CDRRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -59,5 +59,25 @@ public class CallDetailRecordDAOImpl implements CallDetailRecordDAO {
     @Override
     public List<CallDetailRecord> findAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public Optional<CallDetailRecord> findByFrom(PhoneNumber from) {
+        return repository.findByFrom(from);
+    }
+
+    @Override
+    public Optional<CallDetailRecord> findByTo(PhoneNumber to) {
+        return repository.findByTo(to);
+    }
+
+    @Override
+    public Optional<CallDetailRecord> findByConversationType(ConversationType conversationType) {
+        return repository.findByConversationType(conversationType);
+    }
+
+    @Override
+    public Optional<CallDetailRecord> findByTelephoneExchange(TelephoneExchange telephoneExchange) {
+        return repository.findByTelephoneExchange(telephoneExchange);
     }
 }

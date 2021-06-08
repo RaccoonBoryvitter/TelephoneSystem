@@ -10,126 +10,15 @@ body::-webkit-scrollbar {
     display: none;
 }
 
-
-.navbar {
-    width: 100%;
-    margin: 0 auto;
-    background-color: rgb(255, 255, 255);
-    -webkit-box-shadow: 0px 5px 5px -1px rgba(0, 0, 0, 0.397);
-    box-shadow: 0px 5px 5px -1px rgba(0,0,0,0.397);
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.navbar ul {
-    list-style: none;
-    text-align: center;
-    margin: 10px 0;
-    padding: 0 10px;
-}
-
-.navbar ul li {
-    display: inline-block;
-}
-
-.navbar ul li a {
-    display: block;
+.welcome {
+    font-size: 1.3em;
+    width: max-content;
     padding: 15px;
-    text-decoration: none;
-    color: #000;
-    font-weight: 800;
-    text-transform: uppercase;
-    margin: 0 2px;
-
-    position: relative;
-    border-radius: 5px;
-    overflow: hidden;
-    z-index: 1;
-}
-
-.navbar ul li a:hover {
-    color: #fff;
-}
-
-.navbar ul li a:before,
-.navbar ul li a:after {
-    position: absolute;
-    width: 0px;
-    height: 100%;
-    top: 0;
-    bottom: 0;
-    background: #3460d9;
-    transition: all .5s;
-    margin: auto;
-    content: '.';
-    color: transparent;
-    z-index: -1;
-    opacity: 0.75;
-}
-
-.navbar ul li a:before {
-    left: 0;
-}
-
-.navbar ul li a:after {
-    right: 0;
-}
-
-.navbar ul li a:hover:after,
-.navbar ul li a:hover:before {
-    width: 100%;
-}
-
-.navbar ul li a,
-.navbar ul li a:before,
-.navbar ul li a:after {
-    transition: all .5s;
-}
-
-.account {
-    position: relative;
-    display: inline-block;
-}
-
-.user-btn {
-    background-color: #04AA6D;
+    background-color: #3460d9;
     color: white;
-    padding: 15px;
-    margin: 10px 10px 0 0;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    z-index: 1;
-}
-
-.menu {
-    display: none;
-    position: absolute;
-    right: 0;
-    margin: 10px 10px 0 0;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 3;
-}
-
-.menu a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.menu a:hover {
-    background-color: #f1f1f1;
-}
-
-.account:hover .menu {
-    display: block;
-}
-
-.account:hover .user-btn {
-    background-color: #3e8e41;
+    border-radius: 15px;
+    text-align: center;
+    margin: 30px auto;
 }
 
 .tile {
@@ -196,15 +85,9 @@ body::-webkit-scrollbar {
 
 #particles {
     position: fixed !important;
-    left:0;
-    top:0;
     width:100%;
     height:100%;
+    left: 0;
+    top: 0;
     z-index: -1;
-}
-
-.logo {
-    width: 50px;
-    height: 50px;
-    margin: 20px 0px ;
 }

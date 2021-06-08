@@ -23,12 +23,12 @@ public class SubscriberRestController {
     
     private final SubscriberService service;
 
-    @RequestMapping("/get/all/")
+    @GetMapping("/get/all")
     public List<Subscriber> findAll() {
         return service.findAll();
     }
 
-    @PostMapping("/create/")
+    @PostMapping("/create")
     public Subscriber create( @RequestBody Subscriber subscriber) {
         return service.create(subscriber);
     }
@@ -38,12 +38,12 @@ public class SubscriberRestController {
         return service.findById(Long.valueOf(id));
     }
 
-    @PostMapping("/update/{id}")
+    @PutMapping("/update/{id}")
     public Subscriber updateById( @RequestBody Subscriber subscriber, @PathVariable("id") String id) {
         return service.updateById(Long.valueOf(id), subscriber);
     }
 
-    @GetMapping("delete/{id}")
+    @DeleteMapping("delete/{id}")
     public Subscriber deleteById(@PathVariable("id") String id) {
         return service.deleteById(Long.valueOf(id));
     }

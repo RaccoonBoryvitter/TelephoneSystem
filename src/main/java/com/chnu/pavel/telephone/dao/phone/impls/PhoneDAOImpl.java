@@ -3,11 +3,13 @@ package com.chnu.pavel.telephone.dao.phone.impls;
 import com.chnu.pavel.telephone.dao.phone.interfaces.PhoneDAO;
 import com.chnu.pavel.telephone.model.Establishment;
 import com.chnu.pavel.telephone.model.Phone;
+import com.chnu.pavel.telephone.model.PhoneType;
 import com.chnu.pavel.telephone.repository.phone.PhoneRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by IntelliJ IDEA.
@@ -56,5 +58,15 @@ public class PhoneDAOImpl implements PhoneDAO {
     @Override
     public List<Phone> findAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public Optional<Phone> findByName(String name) {
+        return repository.findByName(name);
+    }
+
+    @Override
+    public Optional<Phone> findBPhoneType(PhoneType phoneType) {
+        return repository.findByPhoneType(phoneType);
     }
 }

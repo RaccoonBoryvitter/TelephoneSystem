@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <script th:src="@{https://code.jquery.com/jquery-3.6.0.min.js}"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
+    <script th:src="@{/js/documentation/swagger/script.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/loader.css}">
+    <link rel="stylesheet" th:href="@{/css/documentation/swagger/styles.css}">
+    <title>API</title>
+</head>
+<body>
+
+    <div class="loader">
+        <img th:src="@{/img/loader.gif}" alt="Loading">
+    </div>
+
+    <nav class="navBar">
+        <img class="logo" th:src="@{/img/logo.png}" alt="Logo" >
+        <ul class="links">
+            <li><a th:href="@{/dashboard}">Home</a></li>
+            <li><a th:href="@{/tests}">Tests</a></li>
+            <li><a th:href="@{/api/v1/documentation}">API</a></li>
+            <li><a th:href="@{/documentation}">Documentation</a></li>
+            <li><a th:href="@{/contacts}">Contacts</a></li>
+        </ul>
+
+        <div class="account">
+            <button class="user-btn">
+                Logged as <b sec:authentication="name">Username</b></button>
+
+            <div class="menu">
+                <a th:href="@{/logout}">Log out</a>
+            </div>
+        </div>
+    </nav>
+
+    <iframe th:src="@{/swagger.html}" frameborder="0"></iframe>
+
+</body>
+</html>

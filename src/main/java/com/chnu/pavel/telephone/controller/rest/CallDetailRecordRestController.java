@@ -23,12 +23,12 @@ public class CallDetailRecordRestController {
     
     private final CallDetailRecordService service;
 
-    @RequestMapping("/get/all/")
+    @GetMapping("/get/all")
     public List<CallDetailRecord> findAll() {
         return service.findAll();
     }
 
-    @PostMapping("/create/")
+    @PostMapping("/create")
     public CallDetailRecord create( @RequestBody CallDetailRecord callDetailRecord) {
         return service.create(callDetailRecord);
     }
@@ -38,12 +38,12 @@ public class CallDetailRecordRestController {
         return service.findById(Long.valueOf(id));
     }
 
-    @PostMapping("/update/{id}")
+    @PutMapping("/update/{id}")
     public CallDetailRecord updateById( @RequestBody CallDetailRecord callDetailRecord, @PathVariable("id") String id) {
         return service.updateById(Long.valueOf(id), callDetailRecord);
     }
 
-    @GetMapping("delete/{id}")
+    @DeleteMapping("delete/{id}")
     public CallDetailRecord deleteById(@PathVariable("id") String id) {
         return service.deleteById(Long.valueOf(id));
     }
