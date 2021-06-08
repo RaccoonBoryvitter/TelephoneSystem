@@ -95,7 +95,7 @@ public class ProvinceUiController {
 
         if((service.findByPhoneCode(phoneCode).isPresent()
                 && !service.findByPhoneCode(phoneCode).get().getName().equals(name))
-            || (service.findByName(name).isPresent()
+            && (service.findByName(name).isPresent()
                 && !service.findByName(name).get().getPhoneCode().equals(phoneCode))) {
             error = "ERROR! Object with such credentials exists!";
         } else {

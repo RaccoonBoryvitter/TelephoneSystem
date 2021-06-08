@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 
 @Controller
-@RequestMapping("/swagger/")
+@RequestMapping("/docs/")
 public class SwaggerApiController {
 
-    @RequestMapping("/documentation")
+    @RequestMapping("/swagger")
     public String swaggerPage() {
         return "/documentation/swagger/swagger-api";
     }

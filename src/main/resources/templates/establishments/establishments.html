@@ -1,10 +1,260 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css}" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js}"></script>
+    <script th:src="@{https://kit.fontawesome.com/624f4b9f76.js}" crossorigin="anonymous"></script>
+    <link rel="stylesheet" th:href="@{/css/crud.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">
+    <link rel="stylesheet" th:href="@{/css/loader.css}">
+    <title>Hotline Inc. | Establishments</title>
 </head>
 <body>
+
+<div class="loader">
+    <img th:src="@{/img/loader.gif}" alt="Loading">
+</div>
+
+<nav class="navBar">
+    <img class="logo" th:src="@{/img/logo.png}" alt="Logo" >
+    <ul class="links">
+        <li><a th:href="@{/dashboard}">Home</a></li>
+        <li><a th:href="@{/tests}">Tests</a></li>
+        <li><a th:href="@{/docs/swagger}">API</a></li>
+        <li><a th:href="@{/documentation}">Documentation</a></li>
+        <li><a th:href="@{/contacts}">Contacts</a></li>
+    </ul>
+
+    <div class="account">
+        <button class="user-btn">
+            Logged as <b sec:authentication="name">Username</b></button>
+
+        <div class="menu">
+            <a th:href="@{#}">Edit</a>
+            <a th:href="@{#}">Change Password</a>
+            <a th:href="@{/logout}">Log out</a>
+        </div>
+    </div>
+</nav>
+
+<h1>Establishments</h1>
+
+<table id="main-table">
+    <thead>
+    <tr>
+        <th onclick="sortTable(0, 'numeric')">ID</th>
+        <th onclick="sortTable(1, 'alphabetic')">Name</th>
+        <th onclick="sortTable(2, 'alphabetic')">Telephone Exchange</th>
+        <th onclick="sortTable(3, 'alphabetic')">Created at</th>
+        <th onclick="sortTable(4, 'alphabetic')">Modified at</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${items}">
+        <td th:text="${item.id}" ></td>
+        <td th:text="${item.name}" ></td>
+        <td><a th:href="@{/telephoneExchanges/#${item.telephoneExchange.id}}" th:text="${item.telephoneExchange.codeName}"></a></td>
+        <td th:text="${formatter.format(item.created_at)}" ></td>
+        <td th:text="${formatter.format(item.modified_at)}" ></td>
+        <td>
+            <i th:onclick="'getView(' + ${item.id} + ');'" class="far fa-eye"></i>
+            <i th:onclick="'getUpdate(' + ${item.id} + ');'" class="far fa-edit"></i>
+            <i th:onclick="'getDelete(' + ${item.id} + ');'" class="far fa-trash-alt"></i>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="10">
+            <button id="create-modal-button" data-toggle="modal"
+                    data-target="#ModalCreateForm">+ Create</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div id="ModalCreateForm" class="modal fade">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Add Establishment</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="create-form" role="form" method="POST" th:action="@{/establishments/create/}">
+                    <input type="hidden" name="_token" value="">
+                    <div class="form-group">
+                        <label class="control-label">Name</label>
+                        <div>
+                            <input type="text" class="form-control input-lg"
+                                   name="create-0" placeholder="Name..." pattern="[a-zA-Z]{30}" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Telephone Exchange</label>
+                        <div>
+                            <select name="create-1" class="custom-select" required>
+                                <option th:each="telephoneExchange : ${telephoneExchanges}"
+                                        th:value="${telephoneExchange.id}"
+                                        th:utext="${telephoneExchange.codeName}">
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Description</label>
+                        <div>
+                            <input type="text" class="form-control input-lg"
+                                   name="create-2" placeholder="Type something, i don't know" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <button type="submit" class="btn btn-success">Create</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ModalUpdateForm" class="modal fade">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Update Existing Establishment</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="update-form" role="form" method="POST" th:action="@{#}">
+                    <input type="hidden" name="_token" value="">
+                    <div class="form-group">
+                        <label class="control-label">ID</label>
+                        <div>
+                            <input type="text" class="form-control input-lg" name="update-0" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Name</label>
+                        <div>
+                            <input type="text" class="form-control input-lg"
+                                   name="update-1" placeholder="Name..." pattern="[a-zA-Z]{30}" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Telephone Exchange</label>
+                        <div>
+                            <select name="update-2" class="custom-select" required>
+                                <option th:each="telephoneExchange : ${telephoneExchanges}"
+                                        th:value="${telephoneExchange.id}"
+                                        th:utext="${telephoneExchange.codeName}">
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Description</label>
+                        <div>
+                            <input type="text" class="form-control input-lg"
+                                   name="update-3" placeholder="Type something, i don't know" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div>
+                            <button type="submit" class="btn btn-success">Update</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ModalDelete" class="modal fade">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Delete Establishment</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h2>Are you sure?</h2>
+                <p>Do you want to delete this establishment?</p>
+                <p class="undone">This cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a id="delete-province" href="" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ModalView" class="modal fade">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">View Details</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <h4><b>ID</b></h4>
+                    <h5 class="view-0"></h5>
+                </div>
+                <div>
+                    <h4><b>Name</b></h4>
+                    <h5 class="view-1"></h5>
+                </div>
+                <div>
+                    <h4><b>Telephone Exchange</b></h4>
+                    <h5 class="view-2"></h5>
+                </div>
+                <div>
+                    <h4><b>Created At</b></h4>
+                    <h5 class="view-3"></h5>
+                </div>
+                <div>
+                    <h4><b>Modified At</b></h4>
+                    <h5 class="view-4"></h5>
+                </div>
+                <div>
+                    <h4><b>Description</b></h4>
+                    <h5 class="view-5"></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:if="${!errMsg.equals('noerror')}" class="alert danger-alert">
+    <h6 th:text="${errMsg}"></h6>
+    <a class="alert-close">&times;</a>
+</div>
+
+<div th:if="${!successMsg.equals('nosuccess')}" class="alert success-alert">
+    <h6 th:text="${successMsg}"></h6>
+    <a class="alert-close">&times;</a>
+</div>
+
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js}"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js}"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script th:src="@{/js/crud-loader.js}"></script>
+<script th:src="@{/js/establishment/script.js}"></script>
 
 </body>
 </html>

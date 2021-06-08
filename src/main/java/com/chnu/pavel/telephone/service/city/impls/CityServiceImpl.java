@@ -34,9 +34,6 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public List<City> findAll() {
-        dao.findAll().stream()
-           .filter(c -> c.getProvince() == null)
-           .forEach(c -> dao.deleteById(c.getId()));
 
         return dao.findAll();
     }

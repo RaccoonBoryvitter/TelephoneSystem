@@ -22,7 +22,7 @@
     <ul class="links">
         <li><a th:href="@{/dashboard}">Home</a></li>
         <li><a th:href="@{/tests}">Tests</a></li>
-        <li><a th:href="@{/api/v1/documentation}">API</a></li>
+        <li><a th:href="@{/docs/swagger}">API</a></li>
         <li><a th:href="@{/documentation}">Documentation</a></li>
         <li><a th:href="@{/contacts}">Contacts</a></li>
     </ul>
@@ -32,6 +32,8 @@
             Logged as <b sec:authentication="name">Username</b></button>
 
         <div class="menu">
+            <a th:href="@{#}">Edit</a>
+            <a th:href="@{#}">Change Password</a>
             <a th:href="@{/logout}">Log out</a>
         </div>
     </div>
@@ -161,6 +163,12 @@
                 <form id="update-form" role="form" method="POST" th:action="@{#}">
                     <input type="hidden" name="_token" value="">
                     <div class="form-group">
+                        <div class="form-group">
+                            <label class="control-label">ID</label>
+                            <div>
+                                <input type="text" class="form-control input-lg" name="update-id" disabled>
+                            </div>
+                        </div>
                         <label class="control-label">District</label>
                         <div>
                             <select name="update-district" class="custom-select" required>

@@ -54,9 +54,6 @@ public class EstablishmentServiceImpl implements EstablishmentService {
 
     @Override
     public List<Establishment> findAll() {
-        dao.findAll().stream()
-           .filter(e -> e.getTelephoneExchange() == null)
-           .forEach(e -> dao.deleteById(e.getId()));
 
         return dao.findAll();
     }

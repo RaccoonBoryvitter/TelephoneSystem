@@ -1,15 +1,14 @@
 package com.chnu.pavel.telephone.controller.rest;
 
-import com.chnu.pavel.telephone.helper.SequenceGeneratorService;
 import com.chnu.pavel.telephone.model.Province;
+import com.chnu.pavel.telephone.model.State;
 import com.chnu.pavel.telephone.service.province.interfaces.ProvinceService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.bson.Document;
+import org.springframework.data.mongodb.core.aggregation.AggregationResults;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Date;
-import java.time.Instant;
 import java.util.List;
 
 /**
@@ -52,5 +51,4 @@ public class ProvinceRestController {
     public Province update(@RequestBody Province province, @PathVariable("id") String id) {
         return service.updateById(Long.valueOf(id), province);
     }
-
 }

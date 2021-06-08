@@ -24,7 +24,7 @@ import java.text.SimpleDateFormat;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/addresses/")
+@RequestMapping("/addresses")
 public class AddressUiController {
 
     private final AddressService service;

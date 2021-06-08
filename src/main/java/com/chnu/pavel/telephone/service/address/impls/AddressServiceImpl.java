@@ -56,10 +56,6 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public List<Address> findAll() {
-        addressDAO.findAll().stream()
-                            .filter(a -> a.getDistrict() == null)
-                            .forEach(a -> addressDAO.deleteById(a.getId()));
-
         return addressDAO.findAll();
     }
 

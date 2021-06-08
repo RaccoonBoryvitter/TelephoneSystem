@@ -54,10 +54,6 @@ public class TelephoneExchangeServiceImpl implements TelephoneExchangeService {
 
     @Override
     public List<TelephoneExchange> findAll() {
-        dao.findAll().stream()
-           .filter(tx -> tx.getAddress() == null)
-           .forEach(tx -> dao.deleteById(tx.getId()));
-
         return dao.findAll();
     }
 }

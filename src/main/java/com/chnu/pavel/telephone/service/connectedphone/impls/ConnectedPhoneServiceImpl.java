@@ -54,9 +54,6 @@ public class ConnectedPhoneServiceImpl implements ConnectedPhoneService {
 
     @Override
     public List<ConnectedPhone> findAll() {
-        dao.findAll().stream()
-           .filter(cp -> cp.getPhoneNumber() == null)
-           .forEach(pn -> dao.deleteById(pn.getId()));
 
         return dao.findAll();
     }

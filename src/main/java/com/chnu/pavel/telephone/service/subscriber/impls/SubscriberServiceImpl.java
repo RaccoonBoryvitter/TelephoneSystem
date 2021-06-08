@@ -54,9 +54,6 @@ public class SubscriberServiceImpl implements SubscriberService {
 
     @Override
     public List<Subscriber> findAll() {
-        dao.findAll().stream()
-           .filter(s -> s.getConnectedPhone().getPhoneNumber().getTelephoneExchange() == null)
-           .forEach(s -> dao.deleteById(s.getId()));
 
         return dao.findAll();
     }

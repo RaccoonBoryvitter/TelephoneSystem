@@ -55,13 +55,6 @@ public class PhoneNumberServiceImpl implements PhoneNumberService {
 
     @Override
     public List<PhoneNumber> findAll() {
-        dao.findAll().stream()
-           .filter(pn -> pn.getAddress() == null)
-           .forEach(pn -> dao.deleteById(pn.getId()));
-
-        dao.findAll().stream()
-           .filter(pn -> pn.getTelephoneExchange() == null)
-           .forEach(pn -> dao.deleteById(pn.getId()));
 
         return dao.findAll();
     }

@@ -55,10 +55,6 @@ public class AgencyServiceImpl implements AgencyService {
 
     @Override
     public List<Agency> findAll() {
-        dao.findAll().stream()
-           .filter(a -> a.getTelephoneExchange() == null)
-           .forEach(a -> dao.deleteById(a.getId()));
-
         return dao.findAll();
     }
 

@@ -3,14 +3,24 @@ package com.chnu.pavel.telephone.service.province.impls;
 import com.chnu.pavel.telephone.dao.province.interfaces.ProvinceDAO;
 import com.chnu.pavel.telephone.helper.SequenceGeneratorService;
 import com.chnu.pavel.telephone.model.Province;
+import com.chnu.pavel.telephone.model.State;
 import com.chnu.pavel.telephone.service.province.interfaces.ProvinceService;
 import lombok.RequiredArgsConstructor;
+import org.bson.Document;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.aggregation.Aggregation;
+import org.springframework.data.mongodb.core.aggregation.AggregationResults;
+import org.springframework.data.mongodb.core.aggregation.GroupOperation;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.util.MultiValueMap;
 
-import java.util.Date;
+import java.util.*;
 import java.time.Instant;
-import java.util.List;
-import java.util.Optional;
+
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.group;
+import static org.springframework.data.mongodb.core.aggregation.Aggregation.newAggregation;
 
 /**
  * Created by IntelliJ IDEA.
@@ -27,6 +37,7 @@ public class ProvinceServiceImpl implements ProvinceService {
 
     private final ProvinceDAO dao;
     private final SequenceGeneratorService generatorService;
+    private final MongoTemplate template;
 
     @Override
     public List<Province> findAll() {

@@ -54,10 +54,6 @@ public class CallDetailRecordServiceImpl implements CallDetailRecordService {
 
     @Override
     public List<CallDetailRecord> findAll() {
-        dao.findAll().stream()
-           .filter(cdr -> cdr.getTelephoneExchange() == null)
-           .forEach(cdr -> dao.deleteById(cdr.getId()));
-
         return dao.findAll();
     }
 

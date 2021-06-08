@@ -55,9 +55,6 @@ public class DistrictServiceImpl implements DistrictService {
 
     @Override
     public List<District> findAll() {
-        dao.findAll().stream()
-                .filter(d -> d.getCity() == null)
-                .forEach(d -> dao.deleteById(d.getId()));
 
         return dao.findAll();
     }
