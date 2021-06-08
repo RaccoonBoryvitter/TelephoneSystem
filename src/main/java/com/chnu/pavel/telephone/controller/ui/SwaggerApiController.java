@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 
 @Controller
-@RequestMapping("/api/v1")
+@RequestMapping("/swagger/")
 public class SwaggerApiController {
 
     @RequestMapping("/documentation")
